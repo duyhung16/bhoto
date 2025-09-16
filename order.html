@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý tái tục - Bảo Hiểm Ô Tô</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-down {
+            animation: fadeInDown 0.3s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Expand/Collapse functionality using CSS */
+        #expand-1:checked~tr+tr,
+        #expand-2:checked~tr+tr,
+        #expand-3:checked~tr+tr,
+        #expand-4:checked~tr+tr,
+        #expand-5:checked~tr+tr,
+        #expand-6:checked~tr+tr,
+        #expand-7:checked~tr+tr,
+        #expand-8:checked~tr+tr,
+        #expand-9:checked~tr+tr,
+        #expand-10:checked~tr+tr {
+            display: table-row !important;
+        }
+
+        #expand-1:checked~tr label i,
+        #expand-2:checked~tr label i,
+        #expand-3:checked~tr label i,
+        #expand-4:checked~tr label i,
+        #expand-5:checked~tr label i,
+        #expand-6:checked~tr label i,
+        #expand-7:checked~tr label i,
+        #expand-8:checked~tr label i,
+        #expand-9:checked~tr label i,
+        #expand-10:checked~tr label i {
+            transform: rotate(90deg);
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-50">
+    <!-- Sidebar Container with toggle -->
+    <div class="sidebar-container group">
+        <input type="checkbox" id="sidebar-toggle" class="hidden">
+        <!-- Sidebar with Tailwind classes -->
+        <div
+            class="fixed left-0 top-0 h-full bg-slate-800 transition-all duration-300 ease-in-out z-50 w-64 -translate-x-full md:translate-x-0 group-has-[#sidebar-toggle:checked]:translate-x-0 md:group-has-[#sidebar-toggle:checked]:w-20">
+            <!-- Logo -->
+            <div class="p-4 border-b border-slate-700">
+                <div class="flex items-center justify-center md:group-has-[#sidebar-toggle:checked]:justify-center">
+                    <div class="md:group-has-[#sidebar-toggle:checked]:hidden">
+                        <span class="text-blue-400 font-bold text-lg">baohiem</span>
+                        <span class="text-orange-400 font-bold text-lg">oto.vn</span>
+                    </div>
+                    <div class="hidden md:group-has-[#sidebar-toggle:checked]:block">
+                        <i class="fas fa-home text-blue-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Navigation -->
+            <nav class="mt-4">
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="index.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-chart-pie text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Admin Dashboard</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="users.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-users text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý tài khoản</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="qrcode.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-qrcode text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý QR</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="role.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-user-tie text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý phân quyền</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="sale.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý bán hàng</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <div
+                        class="flex items-center text-orange-400 bg-slate-700 rounded-lg p-3 md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-sync-alt text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý tái tục</span>
+                    </div>
+                </div>
+
+                <div class="border-b border-slate-700 md:hidden"></div>
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
+                    <a href="#"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Thông báo</span>
+                    </a>
+                </div>
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
+                    <label for="change-password-modal"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-lock text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đổi mật khẩu</span>
+                    </label>
+                </div>
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
+                    <a href="#"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-sign-out-alt text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đăng xuất</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile overlay -->
+        <label for="sidebar-toggle"
+            class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden group-has-[#sidebar-toggle:checked]:block md:group-has-[#sidebar-toggle:checked]:hidden cursor-pointer"></label>
+
+
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            <!-- Main content with responsive margins -->
+            <div
+                class="transition-all duration-300 ease-in-out ml-0 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-0 md:group-has-[#sidebar-toggle:checked]:ml-20">
+                <!-- Top Header -->
+                <header class="bg-white shadow-sm border-b hidden md:block">
+                    <div class="flex items-center justify-between p-4">
+                        <div class="flex items-center space-x-4">
+                            <!-- Updated toggle labels to use single checkbox -->
+                            <label for="sidebar-toggle" class="text-gray-600 hover:text-gray-900 cursor-pointer">
+                                <i class="fas fa-bars text-xl"></i>
+                            </label>
+                            <h1 class="text-xl font-semibold text-gray-800 hidden md:block">Quản lý tái tục</h1>
+                        </div>
+
+                        <div class=" flex items-center space-x-2">
+                            <!-- Notification dropdown with pure Tailwind hover/focus states -->
+                            <div class="relative group/notification">
+                                <button class="relative focus:outline-none">
+                                    <i class="fas fa-bell text-gray-600"></i>
+                                    <span
+                                        class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">1</span>
+                                </button>
+                                <!-- Invisible bridge to connect button and dropdown -->
+                                <div class="absolute right-0 top-6 w-64 h-4 z-40 group-hover/notification:block hidden">
+                                </div>
+                                <div
+                                    class="absolute right-0 top-8 w-64 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/notification:block group-hover/notification:opacity-100 group-hover/notification:visible group-hover/notification:translate-y-0">
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-sync-alt text-blue-500"></i>
+                                            <span class="text-sm text-gray-700">Có 100 đơn cần tái tục</span>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-sync-alt text-blue-500"></i>
+                                            <span class="text-sm text-gray-700">Bạn được chia 10 đơn tái tục</span>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-file-alt text-blue-500"></i>
+                                            <span class="text-sm text-gray-700">Bạn có 10 đơn hàng mới</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- User dropdown menu with pure Tailwind hover/focus states -->
+                            <div class="relative group/user ml-4">
+                                <button class="flex items-center space-x-2 focus:outline-none">
+                                    <span class="text-sm text-gray-700 hidden md:block">Nguyen Ngoc Anh - KT</span>
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-user text-gray-600 text-sm"></i>
+                                    </div>
+                                    <i class="fas fa-chevron-down text-gray-400 text-xs hidden md:block"></i>
+                                </button>
+                                <!-- Invisible bridge to connect button and dropdown -->
+                                <div class="absolute right-0 top-8 w-48 h-4 z-40 group-hover/user:block hidden"></div>
+                                <div
+                                    class="absolute right-0 top-10 w-48 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/user:block group-hover/user:opacity-100 group-hover/user:visible group-hover/user:translate-y-0">
+                                    <label for="change-password-modal"
+                                        class="block px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-lock text-gray-600"></i>
+                                            <span class="text-sm text-gray-700">Đổi mật khẩu</span>
+                                        </div>
+                                    </label>
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-sign-out-alt text-gray-600"></i>
+                                            <span class="text-sm text-gray-700">Đăng xuất</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <!-- Mobile Header -->
+            <div class="md:hidden bg-white p-4 border-b sticky top-0 z-30">
+                <div class="flex items-center justify-between">
+                    <!-- Updated mobile toggle label -->
+                    <label for="sidebar-toggle" class="text-gray-600 cursor-pointer">
+                        <i class="fas fa-bars text-xl"></i>
+                    </label>
+                    <h1 class="text-lg font-semibold">Quản lý tái tục</h1>
+                    <div></div>
+                </div>
+            </div>
+
+
+            <main class="p-4 md:p-6 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-20 duration-300">
+                <!-- Search and Filter Section -->
+                <div class="bg-white rounded-lg shadow-sm p-4 md:p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                        <input type="text" placeholder="QR Code"
+                            class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                        <input type="text" placeholder="Tài khoản"
+                            class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                        <input type="text" placeholder="BKS, SĐT, Tên KH"
+                            class="border border-gray-300 rounded-lg px-3 py-2 text-sm">
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-search mr-2"></i>Tìm kiếm
+                        </button>
+                    </div>
+
+                    <!-- Filter Options -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-2">Lọc theo tháng:</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    class="px-3 py-1.5 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition-colors">
+                                    Tháng 2/2025
+                                </button>
+                                <button
+                                    class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200 transition-colors">
+                                    Tháng 3/2025
+                                </button>
+                                <button
+                                    class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200 transition-colors">
+                                    Tháng 4/2025
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm text-gray-600 mb-2">Lọc theo trạng thái:</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button
+                                    class="px-3 py-1.5 bg-blue-600 text-white rounded text-sm hover:bg-blue-700 transition-colors">
+                                    Chưa tái tục
+                                </button>
+                                <button
+                                    class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded text-sm hover:bg-gray-200 transition-colors">
+                                    Đã tái tục
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="flex justify-between items-center">
+                        <button
+                            class="bg-gray-200 text-gray-700 px-4 py-2 rounded text-sm hover:bg-gray-300 transition-colors">
+                            Chọn tất cả
+                        </button>
+                        <button
+                            class="bg-blue-600 text-white px-4 py-2 rounded text-sm hover:bg-blue-700 transition-colors">
+                            <i class="fas fa-arrow-right mr-2"></i>Chia tái tục
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Orders Table -->
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50 border-b">
+                                <tr>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Mã QR
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Tài khoản
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        BKS
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        SĐT
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Thời hạn
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Tổng phí
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Giá bán
+                                    </th>
+                                    <th
+                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Ngày đặt hàng
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white">
+                                <!-- Row 1 -->
+                                <input type="checkbox" id="expand-1" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-1"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-1"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-1"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        Cường PVT Thống Nhất
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        18LD-002.27
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,873,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        476,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 1 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">Cường PVT Thống Nhất</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Thắng</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 5</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 7290</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 2 -->
+                                <input type="checkbox" id="expand-2" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-2"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-2"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-2"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        DL Xuân Thủy ctv
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        29A-508.93
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        480,700
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        205,001
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 2 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">DL Xuân Thủy ctv</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Xuân Thủy</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 5</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 6500</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 3 -->
+                                <input type="checkbox" id="expand-3" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-3"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-3"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-3"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        NVKD Thịnh pvl
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        30a12345
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,826,000
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,162,000
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 3 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">NVKD Thịnh pvl</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Thịnh</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 7</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 8200</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Continue with more rows... -->
+                                <!-- Row 4 -->
+                                <input type="checkbox" id="expand-4" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-4"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-4"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-4"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        DL Chí Hải Anh
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        30M37305
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,873,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        476,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 4 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">DL Chí Hải Anh</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Chí Hải</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 5</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 7500</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 5 -->
+                                <input type="checkbox" id="expand-5" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-5"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-5"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-5"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        Thắng
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        18LD-002.27
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        480,700
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        205,001
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 5 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">Thắng</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Thắng</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 5</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 7290</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Continue with more rows for a total of 10 -->
+                                <!-- Row 6 -->
+                                <input type="checkbox" id="expand-6" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-6"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-6"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-6"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        admin
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        29A-508.93
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        480,700
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        205,001
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 6 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">admin</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Admin</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 5</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 6800</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 7 -->
+                                <input type="checkbox" id="expand-7" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-7"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-7"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-7"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        Hà Linh
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        30a12345
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,873,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        476,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 7 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">Hà Linh</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Linh</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 7</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 8200</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 8 -->
+                                <input type="checkbox" id="expand-8" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-8"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-8"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-8"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        Chuẩn
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        30M37305
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,826,000
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,162,000
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 8 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">Chuẩn</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Chuẩn</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 7</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 8200</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 9 -->
+                                <input type="checkbox" id="expand-9" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-9"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-9"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-9"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        Pham Trung Kien
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        18LD-002.27
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,873,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        476,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 9 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">Pham Trung Kien</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Kiên</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 5</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 7290</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- Row 10 -->
+                                <input type="checkbox" id="expand-10" class="hidden">
+                                <tr
+                                    class="hover:bg-gray-50 border-b border-gray-100 transition-all duration-200 ease-in-out">
+                                    <td class="px-4 py-4 whitespace-nowrap">
+                                        <div class="flex items-center space-x-2">
+                                            <label for="expand-10"
+                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                <i
+                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                            </label>
+                                            <label for="renewal-modal-10"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Tái
+                                                tục</label>
+                                            <label for="call-modal-10"
+                                                class="text-blue-600 text-sm hover:text-blue-800 cursor-pointer">Call</label>
+                                            <span class="text-sm text-gray-900">24304859</span>
+                                        </div>
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        Cường PVT Thống Nhất
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        18LD-002.27
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        0936505606
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1 năm
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,873,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        476,400
+                                    </td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        05/03/2025 05:05:50
+                                    </td>
+                                </tr>
+                                <!-- Expandable Detail Row 10 -->
+                                <tr class="hidden bg-gray-50 transition-all duration-300 ease-in-out">
+                                    <td colspan="8" class="px-4 py-4">
+                                        <div class="pl-8 border-l-4 border-orange-400 animate-fade-in-down">
+                                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                                                <div>
+                                                    <span class="text-gray-600">Cường PVT Thống Nhất</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Tên KH: Cường</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Loại PT: xeCon</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Số chỗ ngồi: 5</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">NNTX: -</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">Trọng tải: 7290</span>
+                                                </div>
+                                                <div>
+                                                    <span class="text-gray-600">KDVT: Không</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+                        <div class="flex-1 flex justify-between sm:hidden">
+                            <a href="#"
+                                class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                Previous
+                            </a>
+                            <a href="#"
+                                class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                                Next
+                            </a>
+                        </div>
+                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                            <div>
+                                <p class="text-sm text-gray-700">
+                                    Trang <span class="font-medium">1</span> / <span class="font-medium">425</span>
+                                    (Tổng số <span class="font-medium">4,246</span>)
+                                </p>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px"
+                                    aria-label="Pagination">
+                                    <a href="#"
+                                        class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="bg-blue-50 border-blue-500 text-blue-600 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        1
+                                    </a>
+                                    <a href="#"
+                                        class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        2
+                                    </a>
+                                    <a href="#"
+                                        class="bg-white border-gray-300 text-gray-500 hover:bg-gray-50 relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                                        3
+                                    </a>
+                                    <a href="#"
+                                        class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </nav>
+                                <div class="inline-flex items-center">
+                                    <span class="text-sm text-gray-700 mr-2">Hiển thị</span>
+                                    <select class="border border-gray-300 rounded px-3 py-1 text-sm">
+                                        <option>50</option>
+                                        <option>100</option>
+                                        <option>200</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    </div>
+
+
+    </div>
+    </div>
+    </div>
+
+    <!-- Renewal Modal - CHIA TÁI TỤC -->
+    <input type="checkbox" id="renewal-modal-1" class="hidden peer">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="text-lg font-semibold text-blue-600">CHIA TÁI TỤC</h3>
+                <label for="renewal-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </label>
+            </div>
+            <div class="p-6">
+                <div class="space-y-4">
+                    <div>
+                        <span class="text-sm text-gray-600">Số đơn tái tục đã chọn: </span>
+                        <span class="text-sm font-medium">100</span>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Tháng tái tục</label>
+                        <select
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option>Tháng 2/2025</option>
+                            <option>Tháng 3/2025</option>
+                            <option>Tháng 4/2025</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Chọn NV Kinh doanh</label>
+                        <select
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            <option>NVKD Thịnh PVL</option>
+                            <option>DL Xuân Thủy CTV</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
+                <label for="renewal-modal-1"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    Bỏ qua
+                </label>
+                <label for="detail-modal-1"
+                    class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 cursor-pointer transition-colors">
+                    Chia tái tục
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal - THÔNG TIN CHI TIẾT ĐƠN BẢO HIỂM -->
+    <input type="checkbox" id="detail-modal-1" class="hidden peer">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto animate-fade-in-down">
+            <div class="flex items-center justify-between p-6 border-b">
+                <div class="text-center w-full">
+                    <div class="text-blue-600 font-bold text-lg mb-1">baohiem<span class="text-orange-500">oto.vn</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-blue-600">THÔNG TIN CHI TIẾT ĐƠN BẢO HIỂM</h3>
+                </div>
+                <label for="detail-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </label>
+            </div>
+            <div class="p-6">
+                <form class="space-y-6">
+                    <!-- Basic Info Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tên</label>
+                            <input type="text" value="Nguyen Huy Hoang"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">SĐT</label>
+                            <input type="text" value="0936505606"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Chủ sở hữu</label>
+                            <input type="text" value="Nguyễn Minh Sang"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Biển kiểm soát</label>
+                            <div class="flex items-center space-x-2">
+                                <input type="text" value="35A 33319"
+                                    class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <button type="button" class="text-blue-600 hover:text-blue-800 text-sm">Lấy thông
+                                    tin</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tỉnh / Thành phố</label>
+                            <select
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>TP Hồ Chí Minh</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Quận / Huyện</label>
+                            <select
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>Q. Tân Bình</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Địa chỉ</label>
+                        <input type="text" value="Số 10 Cộng Hòa, phường 5"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+
+                    <!-- Time and Price Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Thời hạn</label>
+                            <select
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>1 năm</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ngày hiệu lực</label>
+                            <select
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>05/03/2025</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Ngày kết thúc</label>
+                            <select
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                                <option>05/03/2026</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Price Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tổng phí</label>
+                            <input type="text" value="873,400"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Giá bán</label>
+                            <input type="text" value="476,400"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <!-- Expandable Section -->
+                    <div class="border-t pt-6">
+                        <input type="checkbox" id="expand-vehicle-detail" class="hidden peer">
+                        <label for="expand-vehicle-detail"
+                            class="flex items-center justify-between cursor-pointer text-blue-600 hover:text-blue-800 font-medium">
+                            <span>Thông tin bổ sung</span>
+                            <i class="fas fa-plus transition-transform duration-300 peer-checked:rotate-45"></i>
+                        </label>
+
+                        <div class="expandable-section peer-checked:expanded mt-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <!-- Vehicle details would go here -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="flex items-center justify-center p-6 border-t bg-gray-50">
+                <label for="confirm-modal-1"
+                    class="px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 cursor-pointer transition-colors">
+                    <i class="fas fa-arrow-right mr-2"></i>TIẾP TỤC
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirm Modal - XÁC NHẬN THÔNG TIN BẢO HIỂM -->
+    <input type="checkbox" id="confirm-modal-1" class="hidden peer">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-fade-in-down">
+            <div class="flex items-center justify-between p-6 border-b">
+                <div class="text-center w-full">
+                    <div class="text-blue-600 font-bold text-lg mb-1">baohiem<span class="text-orange-500">oto.vn</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-blue-600">XÁC NHẬN THÔNG TIN BẢO HIỂM</h3>
+                </div>
+                <label for="confirm-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </label>
+            </div>
+            <div class="p-6">
+                <!-- THÔNG TIN ĐĂNG KÝ XE ĐƯỢC BẢO HIỂM Section -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-blue-600 border-b-2 border-blue-600 pb-2 mb-4">THÔNG TIN ĐĂNG
+                        KÝ XE ĐƯỢC BẢO HIỂM</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-600">Biển kiểm soát</span>
+                            <div class="font-medium">30H-888.88</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Số điện thoại</span>
+                            <div class="font-medium">090 133 2241</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Số chỗ ngồi</span>
+                            <div class="font-medium">7</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Kinh doanh vận tải</span>
+                            <div class="font-medium">Không</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Loại xe</span>
+                            <div class="font-medium">Xe con</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- THỜI HAN BẢO HIỂM Section -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-blue-600 border-b-2 border-blue-600 pb-2 mb-4">THỜI HAN BẢO
+                        HIỂM</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-600">Ngày bắt đầu</span>
+                            <div class="font-medium">1/3/2025</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Thời gian tham gia</span>
+                            <div class="font-medium">1 năm</div>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Ngày hết hạn</span>
+                            <div class="font-medium">1/3/2026</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PHÍ BẢO HIỂM Section -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-blue-600 border-b-2 border-blue-600 pb-2 mb-4">PHÍ BẢO HIỂM
+                    </h4>
+                    <div class="space-y-3 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Phí bảo hiểm bắt buộc TNDS</span>
+                            <span class="font-medium">480,700 VNĐ</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Tham gia "Bảo hiểm tai nạn lái xe và người ngồi trên xe"</span>
+                            <span class="font-medium">Không</span>
+                        </div>
+                        <div class="flex justify-between border-t pt-2">
+                            <span class="text-gray-600 font-medium">Tổng phí bảo hiểm</span>
+                            <span class="font-bold text-orange-600">480,700 VNĐ</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upload Section -->
+                <div class="mb-6">
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-600">Bổ sung đăng ký xe hoặc thông tin xe</span>
+                        <button class="text-blue-600 hover:text-blue-800 text-sm">
+                            <i class="fas fa-upload mr-1"></i>Upload
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-between p-6 border-t bg-gray-50">
+                <label for="confirm-modal-1"
+                    class="px-6 py-2 text-sm font-medium text-gray-600 bg-gray-200 rounded-lg hover:bg-gray-300 cursor-pointer transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>QUAY LẠI
+                </label>
+                <label for="success-modal-1"
+                    class="px-6 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 cursor-pointer transition-colors">
+                    ĐĂNG KÝ MUA <i class="fas fa-arrow-right ml-2"></i>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal - GỬI YÊU CẦU THÀNH CÔNG -->
+    <input type="checkbox" id="success-modal-1" class="hidden peer">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-fade-in-down">
+            <div class="flex items-center justify-between p-6 border-b">
+                <div class="text-center w-full">
+                    <div class="text-blue-600 font-bold text-lg mb-1">baohiem<span class="text-orange-500">oto.vn</span>
+                    </div>
+                    <h3 class="text-lg font-semibold text-green-600">GỬI YÊU CẦU THÀNH CÔNG!</h3>
+                </div>
+                <label for="success-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </label>
+            </div>
+            <div class="p-6">
+                <div class="text-center mb-6">
+                    <p class="text-gray-700">Vui lòng quét QR bằng ứng dụng ngân hàng hoặc chuyển khoản theo thông tin
+                        bên dưới.</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row gap-6">
+                    <!-- QR Code Section -->
+                    <div class="lg:w-1/3">
+                        <div class="bg-blue-600 text-white p-6 rounded-lg text-center">
+                            <div class="bg-white p-4 rounded-lg mb-4">
+                                <!-- QR Code placeholder -->
+                                <div
+                                    class="w-32 h-32 mx-auto bg-black flex items-center justify-center text-white text-xs">
+                                    <div class="grid grid-cols-8 gap-1">
+                                        <!-- QR pattern simulation -->
+                                        <div class="w-2 h-2 bg-black"></div>
+                                        <div class="w-2 h-2 bg-white"></div>
+                                        <div class="w-2 h-2 bg-black"></div>
+                                        <div class="w-2 h-2 bg-black"></div>
+                                        <div class="w-2 h-2 bg-white"></div>
+                                        <div class="w-2 h-2 bg-black"></div>
+                                        <div class="w-2 h-2 bg-white"></div>
+                                        <div class="w-2 h-2 bg-black"></div>
+                                        <!-- Add more pattern as needed -->
+                                        <div class="col-span-8 flex items-center justify-center">
+                                            <i class="fas fa-heart text-red-500 text-lg"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-sm">QR chỉ áp dụng cho ứng dụng ngân hàng</p>
+                        </div>
+                    </div>
+
+                    <!-- Payment Info Section -->
+                    <div class="lg:w-2/3">
+                        <h4 class="text-lg font-semibold text-blue-600 border-b-2 border-blue-600 pb-2 mb-4">THÔNG TIN
+                            CHỜ THANH TOÁN</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Ngân hàng</span>
+                                <span class="font-medium">Ngân hàng Quốc tế Việt Nam (VIB)</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Số tài khoản</span>
+                                <span class="font-medium">886679888</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Tên tài khoản</span>
+                                <span class="font-medium">CÔNG TY BẢO HIỂM PVI THĂNG LONG</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Số tiền</span>
+                                <span class="font-medium text-orange-600">480,700 VNĐ</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Nội dung chuyển khoản</span>
+                                <span class="font-medium">30H-888.88</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Bổ sung đăng ký xe hoặc thông tin xe</span>
+                                <button class="text-blue-600 hover:text-blue-800">
+                                    <i class="fas fa-upload mr-1"></i>Upload
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Car Image -->
+                        <div class="mt-6">
+                            <div class="bg-gradient-to-r from-blue-100 to-orange-100 p-4 rounded-lg">
+                                <div
+                                    class="h-32 bg-gradient-to-r from-red-400 to-red-600 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-car text-white text-4xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Change Password Modal -->
+    <input type="checkbox" id="change-password-modal" class="hidden peer">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="text-lg font-semibold text-blue-600">ĐỔI MẬT KHẨU</h3>
+                <label for="change-password-modal" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </label>
+            </div>
+            <div class="p-6">
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu cũ</label>
+                        <input type="password" placeholder="**********"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu mới</label>
+                        <input type="password" placeholder="Nhập mật khẩu mới"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nhập lại mật khẩu mới</label>
+                        <input type="password" placeholder="Nhập mật khẩu mới"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </form>
+            </div>
+            <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
+                <label for="change-password-modal"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    Bỏ qua
+                </label>
+                <button
+                    class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                    Đổi mật khẩu
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - baohiemoto.vn</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    transitionProperty: {
+                        'sidebar': 'transform, margin-left, width',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Sidebar Container with toggle -->
+    <div class="sidebar-container group">
+        <input type="checkbox" id="sidebar-toggle" class="hidden">
+        <!-- Sidebar with Tailwind classes -->
+        <div
+            class="fixed left-0 top-0 h-full bg-slate-800 transition-all duration-300 ease-in-out z-50 w-64 -translate-x-full md:translate-x-0 group-has-[#sidebar-toggle:checked]:translate-x-0 md:group-has-[#sidebar-toggle:checked]:w-20">
+            <!-- Logo -->
+            <div class="p-4 border-b border-slate-700">
+                <div class="flex items-center justify-center md:group-has-[#sidebar-toggle:checked]:justify-center">
+                    <div class="md:group-has-[#sidebar-toggle:checked]:hidden">
+                        <span class="text-blue-400 font-bold text-lg">baohiem</span>
+                        <span class="text-orange-400 font-bold text-lg">oto.vn</span>
+                    </div>
+                    <div class="hidden md:group-has-[#sidebar-toggle:checked]:block">
+                        <i class="fas fa-home text-blue-400 text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Navigation -->
+            <nav class="mt-4">
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <div
+                        class="flex items-center text-orange-400 bg-slate-700 rounded-lg p-3 md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-chart-pie text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Admin Dashboard</span>
+                    </div>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="users.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-users text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý tài khoản</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="qrcode.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-qrcode text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý QR</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="role.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-user-tie text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý phân quyền</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="sale.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-shopping-cart text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý bán hàng</span>
+                    </a>
+                </div>
+
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
+                    <a href="order.html"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-sync-alt text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý tái tục</span>
+                    </a>
+                </div>
+
+                <div class="border-b border-slate-700 md:hidden"></div>
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
+                    <a href="#"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Thông báo</span>
+                    </a>
+                </div>
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
+                    <a href="#"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-lock text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đổi mật khẩu</span>
+                    </a>
+                </div>
+                <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
+                    <a href="#"
+                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        <i class="fas fa-sign-out-alt text-lg"></i>
+                        <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đăng xuất</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Mobile overlay -->
+        <label for="sidebar-toggle"
+            class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden group-has-[#sidebar-toggle:checked]:block md:group-has-[#sidebar-toggle:checked]:hidden cursor-pointer"></label>
+
+        <!-- Main Wrapper -->
+        <div class="main-wrapper">
+            <!-- Main content with responsive margins -->
+            <div
+                class="transition-all duration-300 ease-in-out ml-0 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-0 md:group-has-[#sidebar-toggle:checked]:ml-20">
+                <!-- Top Header -->
+                <header class="bg-white shadow-sm border-b hidden md:block">
+                    <div class="flex items-center justify-between p-4">
+                        <div class="flex items-center space-x-4">
+                            <!-- Updated toggle labels to use single checkbox -->
+                            <label for="sidebar-toggle" class="text-gray-600 hover:text-gray-900 cursor-pointer">
+                                <i class="fas fa-bars text-xl"></i>
+                            </label>
+                            <h1 class="text-xl font-semibold text-gray-800 hidden md:block">Admin Dashboard</h1>
+                        </div>
+
+                        <div class=" flex items-center space-x-2">
+                            <!-- Notification dropdown with pure Tailwind hover/focus states -->
+                            <div class="relative group/notification">
+                                <button class="relative focus:outline-none">
+                                    <i class="fas fa-bell text-gray-600"></i>
+                                    <span
+                                        class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">1</span>
+                                </button>
+                                <!-- Invisible bridge to connect button and dropdown -->
+                                <div class="absolute right-0 top-6 w-64 h-4 z-40 group-hover/notification:block hidden">
+                                </div>
+                                <div
+                                    class="absolute right-0 top-8 w-64 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/notification:block group-hover/notification:opacity-100 group-hover/notification:visible group-hover/notification:translate-y-0">
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-sync-alt text-blue-500"></i>
+                                            <span class="text-sm text-gray-700">Có 100 đơn cần tái tục</span>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-sync-alt text-blue-500"></i>
+                                            <span class="text-sm text-gray-700">Bạn được chia 10 đơn tái tục</span>
+                                        </div>
+                                    </div>
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-file-alt text-blue-500"></i>
+                                            <span class="text-sm text-gray-700">Bạn có 10 đơn hàng mới</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- User dropdown menu with pure Tailwind hover/focus states -->
+                            <div class="relative group/user ml-4">
+                                <button class="flex items-center space-x-2 focus:outline-none">
+                                    <span class="text-sm text-gray-700 hidden md:block">Nguyen Ngoc Anh - KT</span>
+                                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-user text-gray-600 text-sm"></i>
+                                    </div>
+                                    <i class="fas fa-chevron-down text-gray-400 text-xs hidden md:block"></i>
+                                </button>
+                                <!-- Invisible bridge to connect button and dropdown -->
+                                <div class="absolute right-0 top-8 w-48 h-4 z-40 group-hover/user:block hidden"></div>
+                                <div
+                                    class="absolute right-0 top-10 w-48 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/user:block group-hover/user:opacity-100 group-hover/user:visible group-hover/user:translate-y-0">
+                                    <label for="change-password-modal"
+                                        class="block px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-lock text-gray-600"></i>
+                                            <span class="text-sm text-gray-700">Đổi mật khẩu</span>
+                                        </div>
+                                    </label>
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer">
+                                        <div class="flex items-center space-x-3">
+                                            <i class="fas fa-sign-out-alt text-gray-600"></i>
+                                            <span class="text-sm text-gray-700">Đăng xuất</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
+
+            <!-- Mobile Header -->
+            <div class="md:hidden bg-white p-4 border-b sticky top-0 z-30">
+                <div class="flex items-center justify-between">
+                    <!-- Updated mobile toggle label -->
+                    <label for="sidebar-toggle" class="text-gray-600 cursor-pointer">
+                        <i class="fas fa-bars text-xl"></i>
+                    </label>
+                    <h1 class="text-lg font-semibold">Admin Dashboard</h1>
+                    <div></div>
+                </div>
+            </div>
+
+            <!-- Dashboard Content -->
+            <main class="p-4 md:p-6 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-20 duration-300">
+                <!-- Welcome Message (Desktop Only) -->
+                <div class="mb-6 flex items-center flex-col md:flex-row md:justify-between">
+                    <h2 class="text-lg font-semibold text-gray-800">Chào mừng trở lại, Nguyen Ngoc Anh - KT!</h2>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-600">Xem báo cáo trong</span>
+                        <select class="border border-gray-300 rounded px-3 py-1 text-sm">
+                            <option>Tháng 2/2025</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6">
+                    <!-- Revenue Card -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-chart-bar text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Tổng doanh thu</p>
+                                    <p class="text-2xl font-bold text-orange-500">313,306,620</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-arrow-up text-green-500 text-sm"></i>
+                                <span class="text-green-500 text-sm font-medium">16%</span>
+                            </div>
+                            <button class="text-blue-600 text-sm hover:underline">Xem báo cáo <i
+                                    class="fas fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- QR Card -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-qrcode text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Tổng QR</p>
+                                    <p class="text-2xl font-bold text-orange-500">18,999</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-1">
+                                <i class="fas fa-arrow-down text-red-500 text-sm"></i>
+                                <span class="text-red-500 text-sm font-medium">4%</span>
+                            </div>
+                            <button class="text-blue-600 text-sm hover:underline">Xem báo cáo <i
+                                    class="fas fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Orders Card -->
+                    <div class="bg-white rounded-lg shadow-sm p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-sync-alt text-blue-600 text-xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600">Số đơn cần tái tục</p>
+                                    <p class="text-2xl font-bold text-orange-500">240</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end">
+                            <button class="text-blue-600 text-sm hover:underline">Chia tái tục <i
+                                    class="fas fa-chevron-right text-xs"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart Section -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4 md:mb-0">Theo dõi doanh thu nhân viên
+                        </h3>
+                        <div class="flex flex-col md:flex-row md:items-center space-y-2 md:space-y-0 md:space-x-4">
+                            <span class="text-sm text-gray-600">Chọn nhân viên</span>
+                            <select class="border border-gray-300 rounded px-3 py-2 text-sm">
+                                <option>Nguyen Huy Hoang</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-xs text-gray-500 mb-4">Doanh thu triệu đồng / số QR</div>
+
+                    <div class="relative h-72 md:h-80">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // Chart.js configuration
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['1/2025', '2/2025', '3/2025', '4/2025', '5/2025', '6/2025', '7/2025', '8/2025', '9/2025', '10/2025', '11/2025', '12/2025'],
+                datasets: [{
+                    label: 'Doanh thu (triệu đồng)',
+                    data: [3500, 2000, 5000, 4000, 1500, 3500, 4200, 0, 0, 0, 0, 0],
+                    backgroundColor: '#3B82F6',
+                    borderRadius: 4,
+                    maxBarThickness: 40
+                }, {
+                    label: 'Số QR',
+                    data: [2500, 3200, 2200, 2800, 3000, 2600, 2400, 0, 0, 0, 0, 0],
+                    backgroundColor: '#93C5FD',
+                    borderRadius: 4,
+                    maxBarThickness: 40
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 5000,
+                        ticks: {
+                            callback: function (value) {
+                                return value.toLocaleString() + ' / ' + (value / 1000).toFixed(1);
+                            }
+                        },
+                        grid: {
+                            color: '#F3F4F6'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                },
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                }
+            }
+        });
+    </script>
+
+    <!-- Change Password Modal -->
+    <input type="checkbox" id="change-password-modal" class="hidden peer">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="text-lg font-semibold text-blue-600">ĐỔI MẬT KHẨU</h3>
+                <label for="change-password-modal" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </label>
+            </div>
+            <div class="p-6">
+                <form class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu cũ</label>
+                        <input type="password" placeholder="**********"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu mới</label>
+                        <input type="password" placeholder="Nhập mật khẩu mới"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Nhập lại mật khẩu mới</label>
+                        <input type="password" placeholder="Nhập mật khẩu mới"
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </form>
+            </div>
+            <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
+                <label for="change-password-modal"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    Bỏ qua
+                </label>
+                <button
+                    class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                    Đổi mật khẩu
+                </button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
