@@ -18,6 +18,7 @@
                         'primary': '#1A67B2',
                         'secondary': '#F37021',
                         'light-gray': '#F4F6F9',
+                        'light-blue': '#F9FBFE',
                         'dark-gray': '#6C7481',
                         'black-blue': '#0F1F2F',
                         'dummy': '#B0B0B0',
@@ -158,7 +159,7 @@
                             <label for="sidebar-toggle" class="text-gray-600 hover:text-gray-900 cursor-pointer">
                                 <i class="fas fa-bars text-xl"></i>
                             </label>
-                            <h1 class="text-xl font-semibold text-gray-800 hidden md:block">Sửa nhóm quyền</h1>
+                            <h1 class="text-xl font-semibold text-gray-800 hidden md:block">Quản lý phân quyền</h1>
                         </div>
 
                         <div class=" flex items-center space-x-8">
@@ -242,376 +243,397 @@
 
 
             <main class="p-4 md:p-6 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-20 duration-300">
-                <!-- Header with back button -->
-                <div class="mb-6">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <a href="role.html" class="text-primary hover:text-blue-800 transition-colors">
-                            <i class="fas fa-arrow-left text-xl"></i>
-                        </a>
-                        <div>
-                            <h2 class="text-2xl font-bold text-gray-800">Sửa nhóm</h2>
-                            <p class="text-gray-600">Chỉnh sửa thông tin và quyền hạn của nhóm</p>
-                        </div>
-                    </div>
+                <!-- Action Buttons -->
+                <div class="flex justify-end space-x-4 py-6 border-t">
+                    <button
+                        class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                        Lưu
+                        <i class="fas fa-save ml-1"></i>
+                    </button>
+                    <a href="role.html"
+                        class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-gray-700 border border-gray-300 px-6 py-2 rounded-lg hover:bg-gray-50 transition-colors">
+                        Quay lại
+                        <i class="fas fa-share ml-1"></i>
+                    </a>
                 </div>
 
-                <!-- Two Column Layout -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Left Sidebar -->
-                    <div class="lg:col-span-1">
-                        <div class="bg-white rounded-lg shadow-sm p-6">
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Phân quyền</h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center space-x-2">
-                                    <input type="checkbox" id="select-all" class="w-4 h-4 text-blue-600 rounded"
-                                        checked>
-                                    <label for="select-all" class="text-sm text-gray-700">Chọn tất cả</label>
-                                </div>
-                                <div class="pl-6 space-y-2 text-sm text-gray-600">
-                                    <div>Xem</div>
-                                    <div>Sửa</div>
-                                    <div>Thêm</div>
-                                    <div>Xóa</div>
-                                </div>
-                            </div>
+
+                <div class="border border-border rounded-lg shadow-lg bg-white overflow-hidden">
+                    <!-- Header with back button -->
+                    <div class="mb-6 bg-blue-50">
+                        <div class="flex items-center space-x-4 mb-4 text-lg p-4">
+                            <a href="role.html" class="text-primary hover:text-blue-800 transition-colors">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <h2 class="font-semibold text-gray-800">Sửa nhóm quyền</h2>
                         </div>
                     </div>
 
-                    <!-- Right Content Area -->
-                    <div class="lg:col-span-2">
-                        <div class="bg-white rounded-lg shadow-sm">
-                            <div class="p-6">
-                                <form class="space-y-6">
-                                    <!-- Role Name -->
-                                    <div>
-                                        <label class="block text-sm font-medium text-gray-700 mb-2">
-                                            Tên nhóm <span class="text-red-500">*</span>
-                                        </label>
-                                        <input type="text" value="Quản trị"
-                                            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-                                    </div>
+                    <div class="p-4">
 
-                                    <!-- Permissions Table -->
-                                    <div>
-                                        <div class="overflow-x-auto">
-                                            <table class="w-full">
-                                                <thead class="bg-gray-50">
-                                                    <tr>
-                                                        <th
-                                                            class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            Chức năng</th>
-                                                        <th
-                                                            class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                            Quyền</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody class="bg-white divide-y divide-gray-200">
+                        <div class="flex flex-row items-center space-x-4 border-b border-border pb-4">
+                            <label class="text-sm font-medium text-gray-700 w-40">
+                                Tên nhóm <span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" placeholder="Nhập tên nhóm quyền"
+                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm">
+                        </div>
 
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">Manager doanh thu
-                                                        </td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">Quản lý kế toán</td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">Nhập khách từ excel
-                                                        </td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">catalog_customer
-                                                        </td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">Chuyển khách cho
-                                                            sale</td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm font-medium text-gray-900">Hệ thống
-                                                        </td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">Quản lý phí BH</td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">Người dùng</td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr class="hover:bg-gray-50">
-                                                        <td class="px-4 py-3 text-sm text-gray-900">Thêm tài khoản</td>
-                                                        <td class="px-4 py-3">
-                                                            <div class="flex items-center justify-center space-x-4">
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xem</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Sửa</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Thêm</span>
-                                                                </label>
-                                                                <label class="flex items-center">
-                                                                    <input type="checkbox"
-                                                                        class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
-                                                                        checked>
-                                                                    <span class="ml-2 text-sm text-gray-600">Xóa</span>
-                                                                </label>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                        <!-- Two Column Layout -->
+                        <div class="flex flex-row gap-6">
+                            <!-- Left Sidebar -->
+                            <div class="w-40">
+                                <div class="bg-white rounded-lg shadow-sm py-6">
+                                    <h3 class="font-semibold text-normal mb-4">Phân quyền</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center space-x-2">
+                                            <input type="checkbox" id="select-all"
+                                                class="w-4 h-4 text-blue-600 rounded">
+                                            <label for="select-all" class="text-sm text-gray-700">Chọn tất cả</label>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <input type="checkbox" id="role-read" class="w-4 h-4 text-blue-600 rounded">
+                                            <label for="role-read" class="text-sm text-gray-700">Xem</label>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <input type="checkbox" id="role-edit" class="w-4 h-4 text-blue-600 rounded">
+                                            <label for="role-edit" class="text-sm text-gray-700">Sửa</label>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <input type="checkbox" id="role-add" class="w-4 h-4 text-blue-600 rounded">
+                                            <label for="role-add" class="text-sm text-gray-700">Thêm</label>
+                                        </div>
+                                        <div class="flex items-center space-x-2">
+                                            <input type="checkbox" id="role-delete"
+                                                class="w-4 h-4 text-blue-600 rounded">
+                                            <label for="role-delete" class="text-sm text-gray-700">Xóa</label>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <!-- Action Buttons -->
-                                    <div class="flex justify-end space-x-4 pt-6 border-t">
-                                        <button
-                                            class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
-                                            Lưu
-                                        </button>
-                                        <a href="role.html"
-                                            class="bg-white text-gray-700 border border-gray-300 px-6 py-2 rounded-lg hover:bg-gray-50 transition-colors">
-                                            Quay lại
-                                        </a>
+                            <!-- Right Content Area -->
+                            <div class="flex-1">
+                                <div class="bg-white rounded-lg shadow-sm">
+                                    <div class="p-6">
+                                        <form class="space-y-6">
+                                            <!-- Role Name -->
+
+
+                                            <!-- Permissions Table -->
+                                            <div>
+                                                <div class="overflow-x-auto">
+                                                    <table class="w-full">
+                                                        <thead>
+                                                            <tr class="bg-blue-50">
+                                                                <th
+                                                                    class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                                                    Chức năng</th>
+                                                                <th
+                                                                    class="px-4 py-3 text-center text-xs font-semibold text-normal tracking-wider">
+                                                                    Quyền</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="bg-white divide-y divide-gray-200">
+
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">Manager
+                                                                    doanh
+                                                                    thu
+                                                                </td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">Quản lý kế
+                                                                    toán
+                                                                </td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">Nhập khách
+                                                                    từ
+                                                                    excel
+                                                                </td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">
+                                                                    catalog_customer
+                                                                </td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">Chuyển khách
+                                                                    cho
+                                                                    sale</td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <thead>
+                                                            <tr class="bg-blue-50">
+                                                                <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider"
+                                                                    colspan="2">
+                                                                    Hệ thống</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="bg-white divide-y divide-gray-200">
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">Quản lý phí
+                                                                    BH
+                                                                </td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">Người dùng
+                                                                </td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="hover:bg-light-blue">
+                                                                <td class="px-4 py-3 text-sm text-gray-900">Thêm tài
+                                                                    khoản
+                                                                </td>
+                                                                <td class="px-4 py-3">
+                                                                    <div
+                                                                        class="flex items-center justify-center space-x-4">
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xem</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Sửa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Thêm</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                        <label class="flex items-center">
+                                                                            <span
+                                                                                class="mr-2 text-sm text-normal">Xóa</span>
+                                                                            <input type="checkbox"
+                                                                                class="w-4 h-4 text-blue-600 rounded focus:ring-blue-500">
+                                                                        </label>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+
+
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
-    </div>
-    </div>
-
-
-    </div>
     </div>
 
     <!-- Change Password Modal -->
