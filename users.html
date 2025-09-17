@@ -13,22 +13,28 @@
                 extend: {
                     transitionProperty: {
                         'sidebar': 'transform, margin-left, width',
+                    },
+                    colors: {
+                        'primary': '#1A67B2',
+                        'secondary': '#F37021',
+                        'light-gray': '#F4F6F9',
+                        'dark-gray': '#6C7481',
+                        'black-blue': '#0F1F2F',
+                        'dummy': '#B0B0B0',
+                        'normal': '#333333',
+                        'border': '#E4E4E4',
+                        'light-border': '#ECECEC',
                     }
                 }
             }
         }
     </script>
-    <style>
-        /* input[type="date"]::-webkit-calendar-picker-indicator {
-            display: none;
-        } */
-    </style>
 </head>
 
 <body class="bg-gray-50">
     <!-- Sidebar Container with toggle -->
     <div class="sidebar-container group">
-        <input type="checkbox" id="sidebar-toggle" class="hidden">
+        <input type="checkbox" id="sidebar-toggle" class="hidden" checked>
         <!-- Sidebar with Tailwind classes -->
         <div
             class="fixed left-0 top-0 h-full bg-slate-800 transition-all duration-300 ease-in-out z-50 w-64 -translate-x-full md:translate-x-0 group-has-[#sidebar-toggle:checked]:translate-x-0 md:group-has-[#sidebar-toggle:checked]:w-20">
@@ -36,8 +42,18 @@
             <div class="p-4 border-b border-slate-700">
                 <div class="flex items-center justify-center md:group-has-[#sidebar-toggle:checked]:justify-center">
                     <div class="md:group-has-[#sidebar-toggle:checked]:hidden">
-                        <span class="text-blue-400 font-bold text-lg">baohiem</span>
-                        <span class="text-orange-400 font-bold text-lg">oto.vn</span>
+                        <svg width="227" height="26" viewBox="0 0 227 26" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect y="0.5" width="227" height="25" fill="url(#pattern0_2422_812)" />
+                            <defs>
+                                <pattern id="pattern0_2422_812" patternContentUnits="objectBoundingBox" width="1"
+                                    height="1">
+                                    <use xlink:href="#image0_2422_812" transform="scale(0.00220264 0.02)" />
+                                </pattern>
+                                <image id="image0_2422_812" width="454" height="50" preserveAspectRatio="none"
+                                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAcYAAAAyCAYAAADGFnuSAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFyWlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4xLWMwMDAgNzkuYTg3MzFiOSwgMjAyMS8wOS8wOS0wMDozNzozOCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIzLjAgKFdpbmRvd3MpIiB4bXA6Q3JlYXRlRGF0ZT0iMjAyNS0wMy0wMVQxNjo1MTowNSswNzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNS0wMy0wMVQxNjo1MTowNSswNzowMCIgeG1wOk1vZGlmeURhdGU9IjIwMjUtMDMtMDFUMTY6NTE6MDUrMDc6MDAiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6ODYxYjQ1YTUtYjdlYy1lMTRlLTkxYTAtMTI0ZmFhOWNmZDU1IiB4bXBNTTpEb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6NmRlZDc3MTQtMGEyYy03YzRjLWIwNWYt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" />
+                            </defs>
+                        </svg>
                     </div>
                     <div class="hidden md:group-has-[#sidebar-toggle:checked]:block">
                         <i class="fas fa-home text-blue-400 text-xl"></i>
@@ -144,13 +160,13 @@
                             <h1 class="text-xl font-semibold text-gray-800 hidden md:block">Quản lý tài khoản</h1>
                         </div>
 
-                        <div class=" flex items-center space-x-2">
+                        <div class=" flex items-center space-x-8">
                             <!-- Notification dropdown with pure Tailwind hover/focus states -->
                             <div class="relative group/notification">
                                 <button class="relative focus:outline-none">
                                     <i class="fas fa-bell text-gray-600"></i>
                                     <span
-                                        class="absolute -top-1 -right-1 bg-orange-500 text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">1</span>
+                                        class="absolute -top-1 -right-1 bg-secondary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">1</span>
                                 </button>
                                 <!-- Invisible bridge to connect button and dropdown -->
                                 <div class="absolute right-0 top-6 w-64 h-4 z-40 group-hover/notification:block hidden">
@@ -246,7 +262,7 @@
                             </div>
                             <div>
                                 <button
-                                    class="bg-blue-600 text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
                                     Tìm kiếm<i class="fas fa-search ml-2"></i>
                                 </button>
                             </div>
@@ -255,12 +271,12 @@
                         <!-- Action Buttons -->
                         <div class="flex flex-col md:flex-row gap-2">
                             <label for="create-modal-toggle"
-                                class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer inline-flex items-center justify-center">
+                                class="bg-[linear-gradient(to_bottom,_#F37021_0%,_#F37021_50%,_#E0671F_50.01%,_#E0671F_100%)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer inline-flex items-center justify-center">
                                 Tạo tài khoản <i class="fas fa-plus ml-2"></i>
                             </label>
                             <button
-                                class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
-                                Import tài khoản <i class="fas fa-upload ml-2"></i>
+                                class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                                Import tài khoản <i class="fas fa-list ml-2"></i>
                             </button>
                         </div>
 
@@ -268,58 +284,49 @@
 
                     <!-- Filter Tabs -->
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <button class="border border-blue-600 text-blue-600 px-4 py-2 rounded-lg text-sm font-medium">
+                        <button class="border border-[#1A67B2] text-[#1A67B2] px-4 py-2 rounded-lg text-sm font-medium">
                             <i class="fas fa-filter mr-2"></i>Tất cả
                         </button>
                         <button
-                            class="border border-gray-100 bg-white text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
                             Giám đốc vùng
                         </button>
                         <button
-                            class="border border-gray-100 bg-white text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
                             NV Kinh doanh
                         </button>
                         <button
-                            class="border border-gray-100 bg-white text-gray-700 px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
                             Đại lý
                         </button>
                     </div>
                 </div>
 
                 <!-- Users Table -->
-                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="bg-white border border-border rounded-lg shadow-lg overflow-hidden">
                     <!-- Table Header -->
                     <div class="overflow-x-auto">
                         <table class="w-full">
                             <thead class="bg-blue-50 border-b">
                                 <tr>
                                     <th></th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         SĐT</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Tên</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Loại TK</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Chiết khấu %</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         QR tồn / Tổng số</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Doanh số</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Giá bán</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Hoa hồng</th>
-                                    <th
-                                        class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Ngày tạo</th>
                                 </tr>
                             </thead>
@@ -333,9 +340,9 @@
                                                     class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ease-in-out"></i>
                                             </label>
                                             <label for="assign-qr-modal-1"
-                                                class="text-blue-600 bg-blue-50 px-2 py-1 rounded-lg text-sm hover:text-blue-800 transition-all duration-150 ease-in-out cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
-                                                <i class="fas fa-link text-blue-600"></i>
+                                                <i class="fas fa-link text-primary"></i>
                                             </label>
                                         </div>
                                     </td>
@@ -354,7 +361,7 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">2,613/8,000</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">2,355,801,030</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">1,359,968,248</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-orange-500 font-medium">
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         12,110,990</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
                                 </tr>
@@ -368,9 +375,9 @@
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </label>
                                             <label for="assign-qr-modal-1"
-                                                class="text-blue-600 bg-blue-50 px-2 py-1 rounded-lg text-sm hover:text-blue-800 transition-all duration-150 ease-in-out cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
-                                                <i class="fas fa-link text-blue-600"></i></label>
+                                                <i class="fas fa-link text-primary"></i></label>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
@@ -380,7 +387,7 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">1,053/6,254</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">30,506,300</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">17,226,680</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-orange-500 font-medium">
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         2,698,710</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
                                 </tr>
@@ -394,9 +401,9 @@
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand3:rotate-90"></i>
                                             </label>
                                             <label for="assign-qr-modal-1"
-                                                class="text-blue-600 bg-blue-50 px-2 py-1 rounded-lg text-sm hover:text-blue-800 transition-all duration-150 ease-in-out cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
-                                                <i class="fas fa-link text-blue-600"></i></label>
+                                                <i class="fas fa-link text-primary"></i></label>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
@@ -407,7 +414,7 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">94/329</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">203,699,760</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">92,326,856</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-orange-500 font-medium">
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         8,601,504</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
                                 </tr>
@@ -421,9 +428,9 @@
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand4:rotate-90"></i>
                                             </label>
                                             <label for="assign-qr-modal-1"
-                                                class="text-blue-600 bg-blue-50 px-2 py-1 rounded-lg text-sm hover:text-blue-800 transition-all duration-150 ease-in-out cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
-                                                <i class="fas fa-link text-blue-600"></i></label>
+                                                <i class="fas fa-link text-primary"></i></label>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
@@ -434,81 +441,75 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">2,613/8,000</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">30,506,300</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">17,226,680</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-orange-500 font-medium">
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         2,110,990</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                </div>
 
-                    <!-- Pagination -->
-                    <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
-                        <div class="flex-1 flex justify-between sm:hidden">
-                            <button
-                                class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                                Previous
-                            </button>
-                            <button
-                                class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                                Next
-                            </button>
+                <!-- Pagination -->
+                <div class="py-3 flex items-center justify-between border-t border-gray-200">
+                    <div class="flex-1 flex justify-between sm:hidden">
+                        <button
+                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                            Previous
+                        </button>
+                        <button
+                            class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                            Next
+                        </button>
+                    </div>
+                    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                        <div>
+                            <p class="text-sm text-gray-700">
+                                Trang <span class="font-bold">1</span> / <span class="font-bold">425</span>
+                                (Tổng số <span class="font-bold">4,246</span>)
+                            </p>
                         </div>
-                        <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-                            <div>
-                                <p class="text-sm text-gray-700">
-                                    Trang <span class="font-bold">1</span> / <span class="font-bold">425</span>
-                                    (Tổng số <span class="font-bold">4,246</span>)
-                                </p>
-                            </div>
-                            <nav class="relative z-0 grid grid-cols-9" aria-label="Pagination">
-                                <button
-                                    class="flex items-center justify-center px-2 py-2 rounded-l-md text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                    <i class="fas fa-angle-double-left"></i>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                    <i class="fas fa-angle-left"></i>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center px-3 py-2 text-sm font-medium text-blue-600">1</button>
-                                <button
-                                    class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">2</button>
-                                <button
-                                    class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">3</button>
-                                <button
-                                    class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">4</button>
-                                <button
-                                    class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">5</button>
-                                <button
-                                    class="flex items-center justify-center px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                    <i class="fas fa-angle-right"></i>
-                                </button>
-                                <button
-                                    class="flex items-center justify-center px-2 py-2 rounded-r-md text-sm font-medium text-gray-500 hover:bg-gray-50">
-                                    <i class="fas fa-angle-double-right"></i>
-                                </button>
-                            </nav>
+                        <nav class="relative z-0 grid grid-cols-9" aria-label="Pagination">
+                            <button
+                                class="flex items-center justify-center px-2 py-2 rounded-l-md text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-double-left"></i>
+                            </button>
+                            <button
+                                class="flex items-center justify-center px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-left"></i>
+                            </button>
+                            <button
+                                class="flex items-center justify-center px-3 py-2 text-sm font-medium text-primary">1</button>
+                            <button
+                                class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">2</button>
+                            <button
+                                class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">3</button>
+                            <button
+                                class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">4</button>
+                            <button
+                                class="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">5</button>
+                            <button
+                                class="flex items-center justify-center px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-right"></i>
+                            </button>
+                            <button
+                                class="flex items-center justify-center px-2 py-2 rounded-r-md text-sm font-medium text-gray-500 hover:bg-gray-50">
+                                <i class="fas fa-angle-double-right"></i>
+                            </button>
+                        </nav>
 
-                            <div class="flex items-center space-x-2">
-                                <span class="text-sm text-gray-700">Hiển thị</span>
-                                <select class="border border-gray-300 rounded px-2 py-1 text-sm">
-                                    <option>10</option>
-                                    <option>25</option>
-                                    <option>50</option>
-                                </select>
-                            </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm text-gray-700">Hiển thị</span>
+                            <select class="border border-gray-300 rounded px-2 py-1 text-sm">
+                                <option>10</option>
+                                <option>25</option>
+                                <option>50</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </main>
         </div>
-    </div>
-    </div>
-
-
-    </div>
-    </div>
     </div>
 
     <!-- Create Account Modal -->
@@ -517,7 +518,7 @@
         <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <!-- Modal Header -->
             <div class="flex items-center justify-between p-6 border-b">
-                <h2 class="text-xl font-bold text-blue-600">TẠO TÀI KHOẢN</h2>
+                <h2 class="text-xl font-bold text-primary">TẠO TÀI KHOẢN</h2>
                 <label for="create-modal-toggle" class="text-gray-400 hover:text-gray-600 cursor-pointer">
                     <i class="fas fa-times text-xl"></i>
                 </label>
@@ -581,7 +582,7 @@
                     <!-- Action Buttons -->
                     <div class="flex flex-col md:flex-row gap-4 pt-4">
                         <button type="submit"
-                            class="flex-1 bg-blue-600 text-white rounded-lg px-6 py-3 font-medium hover:bg-blue-700 transition-colors">
+                            class="flex-1 bg-primary text-white rounded-lg px-6 py-3 font-medium hover:bg-blue-700 transition-colors">
                             Tạo tài khoản
                         </button>
                         <label for="create-modal-toggle"
@@ -600,7 +601,7 @@
     <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
-                <h3 class="text-lg font-semibold text-blue-600">ĐỔI MẬT KHẨU</h3>
+                <h3 class="text-lg font-semibold text-primary">ĐỔI MẬT KHẨU</h3>
                 <label for="change-password-modal" class="text-gray-400 hover:text-gray-600 cursor-pointer">
                     <i class="fas fa-times text-xl"></i>
                 </label>
@@ -630,7 +631,7 @@
                     Bỏ qua
                 </label>
                 <button
-                    class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                    class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Đổi mật khẩu
                 </button>
             </div>
@@ -643,7 +644,7 @@
     <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
-                <h3 class="text-lg font-semibold text-blue-600">GÁN QR CHO USER 0936505606</h3>
+                <h3 class="text-lg font-semibold text-primary">GÁN QR CHO USER 0936505606</h3>
                 <label for="assign-qr-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
                     <i class="fas fa-times text-xl"></i>
                 </label>
@@ -668,7 +669,7 @@
                     Bỏ qua
                 </label>
                 <button
-                    class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors">
+                    class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Gán QR
                 </button>
             </div>
