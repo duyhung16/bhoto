@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý bán hàng - Bảo Hiểm Ô Tô</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -28,11 +29,16 @@
                     }
                 }
             }
+        }</script>
+    <style>
+        [x-cloak] {
+            display: none !important;
         }
-    </script>
+    </style>
+
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50" x-data="{ changepw: false, copyQR: false, editQR: false }">
     <!-- Sidebar Container with toggle -->
     <div class="sidebar-container group">
         <input type="checkbox" id="sidebar-toggle" class="hidden" checked>
@@ -123,11 +129,11 @@
                     </a>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
-                    <label for="change-password-modal"
+                    <div @click="changepw = true"
                         class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-lock text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đổi mật khẩu</span>
-                    </label>
+                    </div>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
                     <a href="#"
@@ -140,8 +146,8 @@
         </div>
 
         <!-- Mobile overlay -->
-        <label for="sidebar-toggle"
-            class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden group-has-[#sidebar-toggle:checked]:block md:group-has-[#sidebar-toggle:checked]:hidden cursor-pointer"></label>
+        <button for="sidebar-toggle"
+            class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden group-has-[#sidebar-toggle:checked]:block md:group-has-[#sidebar-toggle:checked]:hidden cursor-pointer"></button>
 
 
 
@@ -155,10 +161,11 @@
                     <div class="flex items-center justify-between p-4">
                         <div class="flex items-center space-x-4">
                             <!-- Updated toggle labels to use single checkbox -->
-                            <label for="sidebar-toggle" class="text-gray-600 hover:text-gray-900 cursor-pointer">
+                            <button for="sidebar-toggle" class="text-gray-600 hover:text-gray-900 cursor-pointer">
                                 <i class="fas fa-bars text-xl"></i>
-                            </label>
-                            <h1 class="text-xl font-semibold text-gray-800 hidden md:block">Quản lý bán hàng</h1>
+                            </button>
+                            <h1 class="text-xl font-semibold text-gray-800 hidden md:block">Quản lý bán hàng
+                            </h1>
                         </div>
 
                         <div class=" flex items-center space-x-8">
@@ -205,16 +212,17 @@
                                     <i class="fas fa-chevron-down text-gray-400 text-xs hidden md:block"></i>
                                 </button>
                                 <!-- Invisible bridge to connect button and dropdown -->
-                                <div class="absolute right-0 top-8 w-48 h-4 z-40 group-hover/user:block hidden"></div>
+                                <div class="absolute right-0 top-8 w-48 h-4 z-40 group-hover/user:block hidden">
+                                </div>
                                 <div
                                     class="absolute right-0 top-10 w-48 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/user:block group-hover/user:opacity-100 group-hover/user:visible group-hover/user:translate-y-0">
-                                    <label for="change-password-modal"
-                                        class="block px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b"
+                                        @click="changepw = true">
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-lock text-gray-600"></i>
                                             <span class="text-sm text-gray-700">Đổi mật khẩu</span>
                                         </div>
-                                    </label>
+                                    </div>
                                     <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-sign-out-alt text-gray-600"></i>
@@ -232,9 +240,9 @@
             <div class="md:hidden bg-white p-4 border-b sticky top-0 z-30">
                 <div class="flex items-center justify-between">
                     <!-- Updated mobile toggle label -->
-                    <label for="sidebar-toggle" class="text-gray-600 cursor-pointer">
+                    <button for="sidebar-toggle" class="text-gray-600 cursor-pointer">
                         <i class="fas fa-bars text-xl"></i>
-                    </label>
+                    </button>
                     <h1 class="text-lg font-semibold">Quản lý bán hàng</h1>
                     <div></div>
                 </div>
@@ -351,19 +359,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -395,19 +403,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -440,19 +448,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -485,19 +493,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -530,19 +538,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -575,19 +583,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -620,19 +628,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -665,19 +673,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -710,19 +718,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -755,19 +763,19 @@
                                 <tr class="hover:bg-light-blue border-b border-gray-100">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <button for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
-                                            </label>
-                                            <label for="edit-modal-1"
+                                            </button>
+                                            <button @click="editQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
-                                            </label>
-                                            <label for="copy-modal-1"
+                                            </button>
+                                            <button @click="copyQR = true"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
                                                 <i class="fas fa-clone text-primary ml-1"></i>
-                                            </label>
+                                            </button>
 
                                         </div>
                                     </td>
@@ -864,14 +872,13 @@
     </div>
 
     <!-- Copy QR Info Modal -->
-    <input type="checkbox" id="copy-modal-1" class="hidden peer">
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="copyQR" x-cloak>
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary">SAO CHÉP THÔNG TIN QR 24304859</h3>
-                <label for="copy-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <button @click="copyQR = false" class="text-gray-400 hover:text-gray-600 cursor-pointer">
                     <i class="fas fa-times text-xl"></i>
-                </label>
+                </button>
             </div>
             <div class="p-6">
                 <div class="space-y-3">
@@ -902,16 +909,16 @@
                 </div>
 
                 <div class="mt-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">QR mới</label>
+                    <button class="block text-sm font-medium text-gray-700 mb-2">QR mới</button>
                     <input type="text" placeholder="QR mới"
                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
             </div>
             <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
-                <label for="copy-modal-1"
+                <button @click="copyQR = true"
                     class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                     Bỏ qua
-                </label>
+                </button>
                 <button
                     class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Sao chép
@@ -921,36 +928,35 @@
     </div>
 
     <!-- Edit QR Info Modal -->
-    <input type="checkbox" id="edit-modal-1" class="hidden peer">
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="editQR" x-cloak>
         <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary">SỬA THÔNG TIN QR 24304859</h3>
-                <label for="edit-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <button @click="editQR = false" class="text-gray-400 hover:text-gray-600 cursor-pointer">
                     <i class="fas fa-times text-xl"></i>
-                </label>
+                </button>
             </div>
             <div class="p-6">
                 <form class="space-y-6">
                     <!-- Basic Info Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Tên</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Tên</button>
                             <input type="text" value="Nguyen Huy Hoang"
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">SĐT</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">SĐT</button>
                             <input type="text" value="0936505606"
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Chủ sở hữu</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Chủ sở hữu</button>
                             <input type="text" value="Nguyễn Minh Sang"
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Biển kiểm soát</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Biển kiểm soát</button>
                             <div class="flex items-center space-x-2">
                                 <input type="text" value="35A 33319"
                                     class="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
@@ -959,14 +965,14 @@
                             </div>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Tỉnh / Thành phố</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Tỉnh / Thành phố</button>
                             <select
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 <option>TP Hồ Chí Minh</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Quận / Huyện</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Quận / Huyện</button>
                             <select
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 <option>Q. Tân Bình</option>
@@ -976,7 +982,7 @@
 
                     <!-- Address -->
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Địa chỉ</label>
+                        <button class="block text-sm font-medium text-gray-700 mb-2">Địa chỉ</button>
                         <input type="text" value="Số 10 Cộng Hòa, phường 5"
                             class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                     </div>
@@ -984,21 +990,21 @@
                     <!-- Time and Price Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Thời hạn</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Thời hạn</button>
                             <select
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 <option>1 năm</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Ngày hiệu lực</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Ngày hiệu lực</button>
                             <select
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 <option>05/03/2025</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Ngày kết thúc</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Ngày kết thúc</button>
                             <select
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 <option>05/03/2026</option>
@@ -1009,12 +1015,12 @@
                     <!-- Price Grid -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Tổng phí</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Tổng phí</button>
                             <input type="text" value="873,400"
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Giá bán</label>
+                            <button class="block text-sm font-medium text-gray-700 mb-2">Giá bán</button>
                             <input type="text" value="476,400"
                                 class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                         </div>
@@ -1023,26 +1029,27 @@
                     <!-- Expandable Vehicle Info Section -->
                     <div class="border-t pt-6">
                         <input type="checkbox" id="expand-vehicle-info" class="hidden peer">
-                        <label for="expand-vehicle-info"
+                        <button for="expand-vehicle-info"
                             class="flex items-center justify-between cursor-pointer text-primary hover:text-blue-800 font-medium">
                             <span>Thông tin bổ sung</span>
                             <i class="fas fa-plus transition-transform duration-300 peer-checked:rotate-45"></i>
-                        </label>
+                        </button>
 
                         <div class="expandable-section peer-checked:expanded mt-4">
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Số máy</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Số máy</button>
                                     <input type="text" value="L15BG2835160"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Số khung</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Số khung</button>
                                     <input type="text" value="RLHRW1872NY103507"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Loại phương tiện</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Loại phương
+                                        tiện</button>
                                     <select
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                         <option selected>Xe con</option>
@@ -1053,35 +1060,36 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Số chỗ ngồi</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Số chỗ ngồi</button>
                                     <input type="text" value="7 người"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Năm SX</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Năm SX</button>
                                     <select
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                         <option>2022</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">KL hàng hóa TGGT
-                                        (Kg)</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">KL hàng hóa TGGT
+                                        (Kg)</button>
                                     <input type="text" value="5500"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Nhãn hiệu</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Nhãn hiệu</button>
                                     <input type="text" value="Honda"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">NNTX</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">NNTX</button>
                                     <input type="text" value="0"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Số người tối đa</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Số người tối
+                                        đa</button>
                                     <input type="text" value="7"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
@@ -1089,30 +1097,31 @@
 
                             <!-- Business Vehicle Radio -->
                             <div class="mt-6">
-                                <label class="block text-sm font-medium text-gray-700 mb-3">Kinh doanh vận tải</label>
+                                <button class="block text-sm font-medium text-gray-700 mb-3">Kinh doanh vận
+                                    tải</button>
                                 <div class="flex items-center space-x-6">
-                                    <label class="flex items-center">
+                                    <button class="flex items-center">
                                         <input type="radio" name="business" value="no" checked
                                             class="text-secondary focus:ring-secondary">
                                         <span class="ml-2 text-sm text-gray-700">Không</span>
-                                    </label>
-                                    <label class="flex items-center">
+                                    </button>
+                                    <button class="flex items-center">
                                         <input type="radio" name="business" value="yes"
                                             class="text-secondary focus:ring-secondary">
                                         <span class="ml-2 text-sm text-gray-700">Có</span>
-                                    </label>
+                                    </button>
                                 </div>
                             </div>
 
                             <!-- Additional Fields -->
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Số ấn chỉ</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Số ấn chỉ</button>
                                     <input type="text"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
                                 <div>
-                                    <label class="block text-sm font-medium text-gray-700 mb-2">Link GCN</label>
+                                    <button class="block text-sm font-medium text-gray-700 mb-2">Link GCN</button>
                                     <input type="text"
                                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                                 </div>
@@ -1137,24 +1146,23 @@
                         class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                         Lưu
                     </button>
-                    <label for="edit-modal-1"
+                    <button @click="editQR = true"
                         class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                         Bỏ qua
-                    </label>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Copy Modal for other rows (simplified) -->
-    <input type="checkbox" id="copy-modal-2" class="hidden peer">
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="copyQR" x-cloak>
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary">SAO CHÉP THÔNG TIN QR 24304859</h3>
-                <label for="copy-modal-2" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <button @click="copyQR = false" class="text-gray-400 hover:text-gray-600 cursor-pointer">
                     <i class="fas fa-times text-xl"></i>
-                </label>
+                </button>
             </div>
             <div class="p-6">
                 <div class="space-y-3">
@@ -1185,16 +1193,16 @@
                 </div>
 
                 <div class="mt-6">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">QR mới</label>
+                    <button class="block text-sm font-medium text-gray-700 mb-2">QR mới</button>
                     <input type="text" placeholder="QR mới"
                         class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                 </div>
             </div>
             <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
-                <label for="copy-modal-2"
+                <button @click="copyQR = true"
                     class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                     Bỏ qua
-                </label>
+                </button>
                 <button
                     class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Sao chép
@@ -1205,45 +1213,46 @@
 
 
     <!-- Change Password Modal -->
-    <input type="checkbox" id="change-password-modal" class="hidden peer">
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="changepw"
+        x-cloak>
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary">ĐỔI MẬT KHẨU</h3>
-                <label for="change-password-modal" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <button class="text-gray-400 hover:text-gray-600 cursor-pointer" @click="changepw = false">
                     <i class="fas fa-times text-xl"></i>
-                </label>
+                </button>
             </div>
             <div class="p-6">
                 <form class="space-y-4">
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu cũ</label>
+                        <button class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu cũ</button>
                         <input type="password" placeholder="**********"
                             class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu mới</label>
+                        <button class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu mới</button>
                         <input type="password" placeholder="Nhập mật khẩu mới"
                             class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                     </div>
                     <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-2">Nhập lại mật khẩu mới</label>
+                        <button class="block text-sm font-medium text-gray-700 mb-2">Nhập lại mật khẩu mới</button>
                         <input type="password" placeholder="Nhập mật khẩu mới"
                             class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
                     </div>
                 </form>
             </div>
             <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
-                <label for="change-password-modal"
+                <button @click="changepw = false"
                     class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                     Bỏ qua
-                </label>
+                </button>
                 <button
                     class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Đổi mật khẩu
                 </button>
             </div>
         </div>
+    </div>
     </div>
 
 

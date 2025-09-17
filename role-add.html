@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tạo nhóm quyền - baohiemoto.vn</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -28,12 +29,17 @@
                     }
                 }
             }
+        }</script>
+    <style>
+        [x-cloak] { 
+            display: none !important;
         }
-    </script>
+    </style>
+
 
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50" x-data="{ changepw: false }">
     <!-- Sidebar Container with toggle -->
     <div class="sidebar-container group">
         <input type="checkbox" id="sidebar-toggle" class="hidden" checked>
@@ -124,11 +130,11 @@
                     </a>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
-                    <label for="change-password-modal"
+                    <div @click="changepw = true"
                         class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-lock text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đổi mật khẩu</span>
-                    </label>
+                    </div>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
                     <a href="#"
@@ -209,13 +215,12 @@
                                 <div class="absolute right-0 top-8 w-48 h-4 z-40 group-hover/user:block hidden"></div>
                                 <div
                                     class="absolute right-0 top-10 w-48 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/user:block group-hover/user:opacity-100 group-hover/user:visible group-hover/user:translate-y-0">
-                                    <label for="change-password-modal"
-                                        class="block px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b" @click="changepw = true">
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-lock text-gray-600"></i>
                                             <span class="text-sm text-gray-700">Đổi mật khẩu</span>
                                         </div>
-                                    </label>
+                                    </div>
                                     <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-sign-out-alt text-gray-600"></i>
@@ -637,12 +642,11 @@
     </div>
 
     <!-- Change Password Modal -->
-    <input type="checkbox" id="change-password-modal" class="hidden peer">
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="changepw" x-cloak>
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary">ĐỔI MẬT KHẨU</h3>
-                <label for="change-password-modal" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <label class="text-gray-400 hover:text-gray-600 cursor-pointer" @click="changepw = false">
                     <i class="fas fa-times text-xl"></i>
                 </label>
             </div>
@@ -666,16 +670,17 @@
                 </form>
             </div>
             <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
-                <label for="change-password-modal"
+                <button @click="changepw = false"
                     class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                     Bỏ qua
-                </label>
+                </button>
                 <button
                     class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Đổi mật khẩu
                 </button>
             </div>
         </div>
+    </div>
     </div>
 
 

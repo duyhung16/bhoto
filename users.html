@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quản lý tài khoản - baohiemoto.vn</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
         tailwind.config = {
@@ -28,11 +29,16 @@
                     }
                 }
             }
+        }</script>
+    <style>
+        [x-cloak] {
+            display: none !important;
         }
-    </script>
+    </style>
+
 </head>
 
-<body class="bg-gray-50">
+<body class="bg-gray-50" x-data="{ changepw: false, assignQR: false, selectedUser: '', createAccount: false }">
     <!-- Sidebar Container with toggle -->
     <div class="sidebar-container group">
         <input type="checkbox" id="sidebar-toggle" class="hidden" checked>
@@ -123,11 +129,11 @@
                     </a>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
-                    <label for="change-password-modal"
+                    <div @click="changepw = true"
                         class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-lock text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đổi mật khẩu</span>
-                    </label>
+                    </div>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
                     <a href="#"
@@ -208,13 +214,13 @@
                                 <div class="absolute right-0 top-8 w-48 h-4 z-40 group-hover/user:block hidden"></div>
                                 <div
                                     class="absolute right-0 top-10 w-48 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/user:block group-hover/user:opacity-100 group-hover/user:visible group-hover/user:translate-y-0">
-                                    <label for="change-password-modal"
-                                        class="block px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
+                                    <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b"
+                                        @click="changepw = true">
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-lock text-gray-600"></i>
                                             <span class="text-sm text-gray-700">Đổi mật khẩu</span>
                                         </div>
-                                    </label>
+                                    </div>
                                     <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer">
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-sign-out-alt text-gray-600"></i>
@@ -271,10 +277,10 @@
 
                         <!-- Action Buttons -->
                         <div class="flex flex-col md:flex-row gap-2">
-                            <label for="create-modal-toggle"
+                            <button @click="createAccount = true"
                                 class="bg-[linear-gradient(to_bottom,_#F37021_0%,_#F37021_50%,_#E0671F_50.01%,_#E0671F_100%)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer inline-flex items-center justify-center">
                                 Tạo tài khoản <i class="fas fa-plus ml-2"></i>
-                            </label>
+                            </button>
                             <button
                                 class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
                                 Import tài khoản <i class="fas fa-list ml-2"></i>
@@ -340,11 +346,11 @@
                                                 <i
                                                     class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ease-in-out"></i>
                                             </label>
-                                            <label for="assign-qr-modal-1"
+                                            <button @click="assignQR = true; selectedUser = '0936505606'"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i>
-                                            </label>
+                                            </button>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -375,10 +381,10 @@
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </label>
-                                            <label for="assign-qr-modal-1"
+                                            <button @click="assignQR = true; selectedUser = '0936505607'"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
-                                                <i class="fas fa-link text-primary"></i></label>
+                                                <i class="fas fa-link text-primary"></i></button>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
@@ -401,10 +407,10 @@
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand3:rotate-90"></i>
                                             </label>
-                                            <label for="assign-qr-modal-1"
+                                            <button @click="assignQR = true; selectedUser = '0936505608'"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
-                                                <i class="fas fa-link text-primary"></i></label>
+                                                <i class="fas fa-link text-primary"></i></button>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
@@ -428,10 +434,10 @@
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand4:rotate-90"></i>
                                             </label>
-                                            <label for="assign-qr-modal-1"
+                                            <button @click="assignQR = true; selectedUser = '0936505609'"
                                                 class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
-                                                <i class="fas fa-link text-primary"></i></label>
+                                                <i class="fas fa-link text-primary"></i></button>
                                         </div>
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
@@ -514,15 +520,15 @@
     </div>
 
     <!-- Create Account Modal -->
-    <div
-        class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked/modal:flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="createAccount"
+        x-cloak>
         <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
             <!-- Modal Header -->
             <div class="flex items-center justify-between p-6 border-b">
                 <h2 class="text-xl font-bold text-primary">TẠO TÀI KHOẢN</h2>
-                <label for="create-modal-toggle" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <button @click="createAccount = false" class="text-gray-400 hover:text-gray-600 cursor-pointer">
                     <i class="fas fa-times text-xl"></i>
-                </label>
+                </button>
             </div>
 
             <!-- Modal Body -->
@@ -586,10 +592,10 @@
                             class="flex-1 bg-primary text-white rounded-lg px-6 py-3 font-medium hover:bg-blue-700 transition-colors">
                             Tạo tài khoản
                         </button>
-                        <label for="create-modal-toggle"
+                        <button @click="createAccount = false"
                             class="flex-1 bg-gray-200 text-gray-700 rounded-lg px-6 py-3 font-medium hover:bg-gray-300 transition-colors cursor-pointer text-center">
                             Bỏ qua
-                        </label>
+                        </button>
                     </div>
                 </form>
             </div>
@@ -598,12 +604,12 @@
 
 
     <!-- Change Password Modal -->
-    <input type="checkbox" id="change-password-modal" class="hidden peer">
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="changepw"
+        x-cloak>
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary">ĐỔI MẬT KHẨU</h3>
-                <label for="change-password-modal" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <label class="text-gray-400 hover:text-gray-600 cursor-pointer" @click="changepw = false">
                     <i class="fas fa-times text-xl"></i>
                 </label>
             </div>
@@ -627,10 +633,10 @@
                 </form>
             </div>
             <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
-                <label for="change-password-modal"
+                <button @click="changepw = false"
                     class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                     Bỏ qua
-                </label>
+                </button>
                 <button
                     class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Đổi mật khẩu
@@ -639,16 +645,15 @@
         </div>
     </div>
 
-    <!-- Assign QR Modals -->
-    <!-- Modal 1 -->
-    <input type="checkbox" id="assign-qr-modal-1" class="hidden peer">
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden peer-checked:flex items-center justify-center p-4">
+    <!-- Assign QR Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="assignQR"
+        x-cloak>
         <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
-                <h3 class="text-lg font-semibold text-primary">GÁN QR CHO USER 0936505606</h3>
-                <label for="assign-qr-modal-1" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                <h3 class="text-lg font-semibold text-primary" x-text="'GÁN QR CHO USER ' + selectedUser"></h3>
+                <button class="text-gray-400 hover:text-gray-600 cursor-pointer" @click="assignQR = false">
                     <i class="fas fa-times text-xl"></i>
-                </label>
+                </button>
             </div>
             <div class="p-6">
                 <form class="space-y-4">
@@ -665,10 +670,10 @@
                 </form>
             </div>
             <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
-                <label for="assign-qr-modal-1"
+                <button @click="assignQR = false"
                     class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                     Bỏ qua
-                </label>
+                </button>
                 <button
                     class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
                     Gán QR
