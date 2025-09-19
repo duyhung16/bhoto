@@ -41,7 +41,7 @@
 <body class="bg-gray-50" x-data="{ changepw: false, assignQR: false, selectedUser: '', createAccount: false }">
     <!-- Sidebar Container with toggle -->
     <div class="sidebar-container group">
-        <input type="checkbox" id="sidebar-toggle" class="hidden" checked>
+        <input type="checkbox" id="sidebar-toggle" class="hidden" />
         <!-- Sidebar with Tailwind classes -->
         <div
             class="fixed left-0 top-0 h-full bg-slate-800 transition-all duration-300 ease-in-out z-50 w-64 -translate-x-full md:translate-x-0 group-has-[#sidebar-toggle:checked]:translate-x-0 md:group-has-[#sidebar-toggle:checked]:w-20">
@@ -74,7 +74,7 @@
             <nav class="mt-4">
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
                     <a href="index.html"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-chart-pie text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Admin Dashboard</span>
                     </a>
@@ -82,7 +82,7 @@
 
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
                     <div
-                        class="flex items-center text-orange-400 bg-slate-700 rounded-lg p-3 md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-orange-400 bg-slate-700 rounded-md p-3 md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-users text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý tài khoản</span>
                     </div>
@@ -90,7 +90,7 @@
 
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
                     <a href="qrcode.html"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-qrcode text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý QR</span>
                     </a>
@@ -98,7 +98,7 @@
 
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
                     <a href="role.html"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-user-tie text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý phân quyền</span>
                     </a>
@@ -106,7 +106,7 @@
 
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
                     <a href="sale.html"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-shopping-cart text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý bán hàng</span>
                     </a>
@@ -114,7 +114,7 @@
 
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2">
                     <a href="order.html"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-sync-alt text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Quản lý tái tục</span>
                     </a>
@@ -123,21 +123,21 @@
                 <div class="border-b border-slate-700 md:hidden"></div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
                     <a href="#"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-bell text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Thông báo</span>
                     </a>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
                     <div @click="changepw = true"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-lock text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đổi mật khẩu</span>
                     </div>
                 </div>
                 <div class="px-4 py-2 md:group-has-[#sidebar-toggle:checked]:px-2 md:hidden">
                     <a href="#"
-                        class="flex items-center text-white hover:bg-slate-700 rounded-lg p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
+                        class="flex items-center text-white hover:bg-slate-700 rounded-md p-3 cursor-pointer transition-colors md:group-has-[#sidebar-toggle:checked]:justify-center">
                         <i class="fas fa-sign-out-alt text-lg"></i>
                         <span class="ml-3 md:group-has-[#sidebar-toggle:checked]:hidden">Đăng xuất</span>
                     </a>
@@ -171,7 +171,7 @@
                             <!-- Notification dropdown with pure Tailwind hover/focus states -->
                             <div class="relative group/notification">
                                 <button class="relative focus:outline-none">
-                                    <i class="fas fa-bell text-gray-600"></i>
+                                    <i class="fas fa-bell text-gray-600 text-2xl"></i>
                                     <span
                                         class="absolute -top-1 -right-1 bg-secondary text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">1</span>
                                 </button>
@@ -179,7 +179,7 @@
                                 <div class="absolute right-0 top-6 w-64 h-4 z-40 group-hover/notification:block hidden">
                                 </div>
                                 <div
-                                    class="absolute right-0 top-8 w-64 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/notification:block group-hover/notification:opacity-100 group-hover/notification:visible group-hover/notification:translate-y-0">
+                                    class="absolute right-0 top-8 w-64 bg-white rounded-md shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/notification:block group-hover/notification:opacity-100 group-hover/notification:visible group-hover/notification:translate-y-0">
                                     <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b">
                                         <div class="flex items-center space-x-3">
                                             <i class="fas fa-sync-alt text-blue-500"></i>
@@ -213,7 +213,7 @@
                                 <!-- Invisible bridge to connect button and dropdown -->
                                 <div class="absolute right-0 top-8 w-48 h-4 z-40 group-hover/user:block hidden"></div>
                                 <div
-                                    class="absolute right-0 top-10 w-48 bg-white rounded-lg shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/user:block group-hover/user:opacity-100 group-hover/user:visible group-hover/user:translate-y-0">
+                                    class="absolute right-0 top-10 w-48 bg-white rounded-md shadow-lg border py-2 z-50 hidden opacity-0 invisible -translate-y-2 transition-all duration-200 group-hover/user:block group-hover/user:opacity-100 group-hover/user:visible group-hover/user:translate-y-0">
                                     <div class="px-4 py-2 hover:bg-gray-50 cursor-pointer border-b"
                                         @click="changepw = true">
                                         <div class="flex items-center space-x-3">
@@ -255,21 +255,21 @@
                         <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                             <div>
                                 <input type="text" placeholder="Tìm theo Tên, SĐT, ID, Key..."
-                                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    class="w-full border border-border placeholder-dummy rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                             </div>
-                            <div class="border border-gray-300 bg-white rounded-lg flex items-center">
+                            <div class="border border-border placeholder-dummy bg-white rounded-md flex items-center">
                                 <i class="fas fa-calendar-alt mx-2"></i>
                                 <input type="date" placeholder="Từ ngày" value="2025-02-17"
-                                    class="w-full border-l border-gray-300 rounded-r-lg px-3 py-2 text-sm focus:outline-none bg-transparent">
+                                    class="w-full border-l border-border placeholder-dummy rounded-r-lg px-3 py-2 text-sm focus:outline-none bg-transparent">
                             </div>
-                            <div class="border border-gray-300 bg-white rounded-lg flex items-center">
+                            <div class="border border-border placeholder-dummy bg-white rounded-md flex items-center">
                                 <i class="fas fa-calendar-alt mx-2"></i>
                                 <input type="date" placeholder="Đến ngày" value="2025-02-17"
                                     class="w-full border-l border-gray-300 rounded-r-lg px-3 py-2 text-sm focus:outline-none bg-transparent">
                             </div>
                             <div>
                                 <button
-                                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white rounded-lg px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
                                     Tìm kiếm<i class="fas fa-search ml-2"></i>
                                 </button>
                             </div>
@@ -278,11 +278,11 @@
                         <!-- Action Buttons -->
                         <div class="flex flex-col md:flex-row gap-2">
                             <button @click="createAccount = true"
-                                class="bg-[linear-gradient(to_bottom,_#F37021_0%,_#F37021_50%,_#E0671F_50.01%,_#E0671F_100%)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer inline-flex items-center justify-center">
+                                class="bg-[linear-gradient(to_bottom,_#F37021_0%,_#F37021_50%,_#E0671F_50.01%,_#E0671F_100%)] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer inline-flex items-center justify-center">
                                 Tạo tài khoản <i class="fas fa-plus ml-2"></i>
                             </button>
                             <button
-                                class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                                class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors">
                                 Import tài khoản <i class="fas fa-list ml-2"></i>
                             </button>
                         </div>
@@ -291,26 +291,31 @@
 
                     <!-- Filter Tabs -->
                     <div class="flex flex-wrap gap-2 mb-4">
-                        <button class="border border-[#1A67B2] text-[#1A67B2] px-4 py-2 rounded-lg text-sm font-medium">
+                        <input type="checkbox" id="filter-all" class="hidden peer/filter-all" checked />
+                        <label for="filter-all"
+                            class="border border-border bg-white text-dark-gray hover:bg-gray-50 transition-colors peer-checked/filter-all:border-[#1A67B2] peer-checked/filter-all:text-[#1A67B2] px-4 py-2 rounded-md text-sm font-medium cursor-pointer">
                             <i class="fas fa-filter mr-2"></i>Tất cả
-                        </button>
-                        <button
-                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                        </label>
+                        <input type="checkbox" id="filter-director" class="hidden peer/filter-director" />
+                        <label for="filter-director"
+                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors peer-checked/filter-director:border-[#1A67B2] peer-checked/filter-director:text-[#1A67B2] cursor-pointer">
                             Giám đốc vùng
-                        </button>
-                        <button
-                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                        </label>
+                        <input type="checkbox" id="filter-sales" class="hidden peer/filter-sales" />
+                        <label for="filter-sales"
+                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors peer-checked/filter-sales:border-[#1A67B2] peer-checked/filter-sales:text-[#1A67B2] cursor-pointer">
                             NV Kinh doanh
-                        </button>
-                        <button
-                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-lg text-sm hover:bg-gray-200 transition-colors">
+                        </label>
+                        <input type="checkbox" id="filter-agent" class="hidden peer/filter-agent" />
+                        <label for="filter-agent"
+                            class="border border-border bg-white text-dark-gray px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors peer-checked/filter-agent:border-[#1A67B2] peer-checked/filter-agent:text-[#1A67B2] cursor-pointer">
                             Đại lý
-                        </button>
+                        </label>
                     </div>
                 </div>
 
                 <!-- Users Table -->
-                <div class="bg-white border border-border rounded-lg shadow-lg overflow-hidden">
+                <div class="bg-white border border-border rounded-md shadow-lg overflow-hidden">
                     <!-- Table Header -->
                     <div class="overflow-x-auto">
                         <table class="w-full">
@@ -347,7 +352,7 @@
                                                     class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ease-in-out"></i>
                                             </label>
                                             <button @click="assignQR = true; selectedUser = '0936505606'"
-                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i>
                                             </button>
@@ -382,7 +387,7 @@
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </label>
                                             <button @click="assignQR = true; selectedUser = '0936505607'"
-                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
@@ -408,7 +413,7 @@
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand3:rotate-90"></i>
                                             </label>
                                             <button @click="assignQR = true; selectedUser = '0936505608'"
-                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
@@ -435,7 +440,7 @@
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand4:rotate-90"></i>
                                             </label>
                                             <button @click="assignQR = true; selectedUser = '0936505609'"
-                                                class="bg-blue-50 px-4 py-2 rounded-lg text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
@@ -532,28 +537,28 @@
             </div>
 
             <!-- Modal Body -->
-            <div class="p-6">
+            <div class="p-6 bg-light-blue">
                 <form class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Phone Number -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">SĐT</label>
                             <input type="tel" value="0936505606"
-                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                         </div>
 
                         <!-- Name -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Tên</label>
                             <input type="text" value="Nguyen Huy Hoang"
-                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                         </div>
 
                         <!-- Province/City -->
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Tỉnh / Thành phố</label>
                             <select
-                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                                 <option>TP Hồ Chí Minh</option>
                                 <option>Hà Nội</option>
                                 <option>Đà Nẵng</option>
@@ -564,7 +569,7 @@
                         <div>
                             <label class="block text-sm font-medium text-gray-700 mb-2">Quận / Huyện</label>
                             <select
-                                class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                                 <option>Q. Tân Bình</option>
                                 <option>Q. 1</option>
                                 <option>Q. 3</option>
@@ -576,28 +581,29 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Địa chỉ</label>
                         <input type="text" value="Số 10 Cộng Hòa, phường 5"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                     </div>
 
                     <!-- Garage -->
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Gara</label>
                         <input type="text" value="Toyota Cộng Hòa"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                     </div>
 
-                    <!-- Action Buttons -->
-                    <div class="flex flex-col md:flex-row gap-4 pt-4">
-                        <button type="submit"
-                            class="flex-1 bg-primary text-white rounded-lg px-6 py-3 font-medium hover:bg-blue-700 transition-colors">
-                            Tạo tài khoản
-                        </button>
-                        <button @click="createAccount = false"
-                            class="flex-1 bg-gray-200 text-gray-700 rounded-lg px-6 py-3 font-medium hover:bg-gray-300 transition-colors cursor-pointer text-center">
-                            Bỏ qua
-                        </button>
-                    </div>
+
                 </form>
+            </div>
+            <!-- Action Buttons -->
+            <div class="flex items-center justify-center space-x-3 p-6 border-t bg-light-blue">
+                <button type="submit"
+                    class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors">
+                    Tạo tài khoản
+                </button>
+                <button @click="createAccount = false"
+                    class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-normal rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                    Bỏ qua
+                </button>
             </div>
         </div>
     </div>
@@ -606,7 +612,7 @@
     <!-- Change Password Modal -->
     <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="changepw"
         x-cloak>
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
+        <div class="bg-white rounded-md shadow-xl max-w-lg w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary">ĐỔI MẬT KHẨU</h3>
                 <label class="text-gray-400 hover:text-gray-600 cursor-pointer" @click="changepw = false">
@@ -618,27 +624,27 @@
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu cũ</label>
                         <input type="password" placeholder="**********"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Mật khẩu mới</label>
                         <input type="password" placeholder="Nhập mật khẩu mới"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Nhập lại mật khẩu mới</label>
                         <input type="password" placeholder="Nhập mật khẩu mới"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                     </div>
                 </form>
             </div>
-            <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
+            <div class="flex items-center justify-center space-x-3 p-6 border-t bg-light-blue">
                 <button @click="changepw = false"
-                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 cursor-pointer transition-colors">
                     Bỏ qua
                 </button>
                 <button
-                    class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
+                    class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors">
                     Đổi mật khẩu
                 </button>
             </div>
@@ -648,34 +654,34 @@
     <!-- Assign QR Modal -->
     <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="assignQR"
         x-cloak>
-        <div class="bg-white rounded-lg shadow-xl max-w-md w-full animate-fade-in-down">
+        <div class="bg-white rounded-md shadow-xl max-w-lg w-full animate-fade-in-down">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary" x-text="'GÁN QR CHO USER ' + selectedUser"></h3>
                 <button class="text-gray-400 hover:text-gray-600 cursor-pointer" @click="assignQR = false">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            <div class="p-6">
+            <div class="p-6 bg-light-blue">
                 <form class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Số bắt đầu</label>
                         <input type="number" value="0"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Số kết thúc</label>
                         <input type="number" value="1000"
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
                     </div>
                 </form>
             </div>
-            <div class="flex items-center justify-end space-x-3 p-6 border-t bg-gray-50">
+            <div class="flex items-center justify-center space-x-3 p-6 border-t bg-light-blue">
                 <button @click="assignQR = false"
-                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
+                    class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-normal rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
                     Bỏ qua
                 </button>
                 <button
-                    class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors">
+                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
                     Gán QR
                 </button>
             </div>
