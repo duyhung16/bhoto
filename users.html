@@ -362,31 +362,36 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                <tr class="bg-orange-50 border-l-4 border-orange-400" @click="accountDetail = true">
+                                <tr x-data="{ expanded: false }"
+                                    :class="{ 'bg-orange-50 border-l-4 !border-l-orange-400': expanded, 'hover:bg-light-blue': !expanded }"
+                                    @click="accountDetail = true">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="hidden sm:flex items-center space-x-2">
-                                            <label for="expand-1"
+                                            <label for="expand-1" @click.stop="expanded = !expanded"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
-                                                <i
-                                                    class="fas fa-chevron-down text-gray-400 transition-transform duration-300 ease-in-out"></i>
+                                                <i class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"
+                                                    :class="{ 'rotate-90': expanded }"></i>
                                             </label>
-                                            <button @click="assignQR = true; selectedUser = '0936505606'"
+                                            <button @click.stop="assignQR = true; selectedUser = '0936505606'"
                                                 class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i>
                                             </button>
                                         </div>
-                                        <input type="checkbox" class="sm:hidden" />
+                                        <input type="checkbox" class="sm:hidden" @click.stop />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         <p>Cường PVT Thông Nhất</p>
-                                        <p class="text-gray-600">Quản lý: admin</p>
-                                        <p class="text-gray-600">Địa chỉ: Số 10 Cộng Hòa, Phường 5, Q.Tân Bình, TP.Hồ
-                                            Chí Minh</p>
-                                        <p class="text-gray-600">Gara: Toyota Cộng Hòa</p>
+                                        <div x-show="expanded">
+                                            <p class="text-gray-600">Quản lý: admin</p>
+                                            <p class="text-gray-600">Địa chỉ: Số 10 Cộng Hòa, Phường 5, Q.Tân Bình,
+                                                TP.Hồ
+                                                Chí Minh</p>
+                                            <p class="text-gray-600">Gara: Toyota Cộng Hòa</p>
+                                        </div>
                                     </td>
                                     <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         GDV</td>
@@ -405,23 +410,34 @@
                                         02/03/2024</td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue">
+                                <tr x-data="{ expanded: false }"
+                                    :class="{ 'bg-orange-50 border-l-4 !border-l-orange-400': expanded, 'hover:bg-light-blue': !expanded }"
+                                    @click="accountDetail = true">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="hidden sm:flex items-center space-x-2">
-                                            <label for="expand-2"
+                                            <label for="expand-2" @click.stop="expanded = !expanded"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
-                                                <i
-                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
+                                                <i class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"
+                                                    :class="{ 'rotate-90': expanded }"></i>
                                             </label>
-                                            <button @click="assignQR = true; selectedUser = '0936505607'"
+                                            <button @click.stop="assignQR = true; selectedUser = '0936505607'"
                                                 class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
-                                        <input type="checkbox" class="sm:hidden" />
+                                        <input type="checkbox" class="sm:hidden" @click.stop />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">Đặng Hưng</td>
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <p>Đặng Hưng</p>
+                                        <div x-show="expanded">
+                                            <p class="text-gray-600">Quản lý: admin</p>
+                                            <p class="text-gray-600">Địa chỉ: Số 10 Cộng Hòa, Phường 5, Q.Tân Bình,
+                                                TP.Hồ
+                                                Chí Minh</p>
+                                            <p class="text-gray-600">Gara: Toyota Cộng Hòa</p>
+                                        </div>
+                                    </td>
                                     <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         DL</td>
                                     <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -439,23 +455,33 @@
                                         02/03/2024</td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue">
+                                <tr x-data="{ expanded: false }"
+                                    :class="{ 'bg-orange-50 border-l-4 !border-l-orange-400': expanded, 'hover:bg-light-blue': !expanded }"
+                                    @click="accountDetail = true">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="hidden sm:flex items-center space-x-2">
-                                            <label for="expand-3"
+                                            <label for="expand-3" @click.stop="expanded = !expanded"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
-                                                <i
-                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand3:rotate-90"></i>
+                                                <i class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"
+                                                    :class="{ 'rotate-90': expanded }"></i>
                                             </label>
-                                            <button @click="assignQR = true; selectedUser = '0936505608'"
+                                            <button @click.stop="assignQR = true; selectedUser = '0936505608'"
                                                 class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
-                                        <input type="checkbox" class="sm:hidden" />
+                                        <input type="checkbox" class="sm:hidden" @click.stop />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">PHAM THI THU SUONG
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <p>PHAM THI THU SUONG</p>
+                                        <div x-show="expanded">
+                                            <p class="text-gray-600">Quản lý: admin</p>
+                                            <p class="text-gray-600">Địa chỉ: Số 10 Cộng Hòa, Phường 5, Q.Tân Bình,
+                                                TP.Hồ
+                                                Chí Minh</p>
+                                            <p class="text-gray-600">Gara: Toyota Cộng Hòa</p>
+                                        </div>
                                     </td>
                                     <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         DL</td>
@@ -474,23 +500,33 @@
                                         02/03/2024</td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue">
+                                <tr x-data="{ expanded: false }"
+                                    :class="{ 'bg-orange-50 border-l-4 !border-l-orange-400': expanded, 'hover:bg-light-blue': !expanded }"
+                                    @click="accountDetail = true">
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="hidden sm:flex items-center space-x-2">
-                                            <label for="expand-4"
+                                            <label for="expand-4" @click.stop="expanded = !expanded"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
-                                                <i
-                                                    class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand4:rotate-90"></i>
+                                                <i class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out"
+                                                    :class="{ 'rotate-90': expanded }"></i>
                                             </label>
-                                            <button @click="assignQR = true; selectedUser = '0936505609'"
+                                            <button @click.stop="assignQR = true; selectedUser = '0936505609'"
                                                 class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Gán
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
-                                        <input type="checkbox" class="sm:hidden" />
+                                        <input type="checkbox" class="sm:hidden" @click.stop />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">Nguyen Thanh Long
+                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <p>Nguyen Thanh Long</p>
+                                        <div x-show="expanded">
+                                            <p class="text-gray-600">Quản lý: admin</p>
+                                            <p class="text-gray-600">Địa chỉ: Số 10 Cộng Hòa, Phường 5, Q.Tân Bình,
+                                                TP.Hồ
+                                                Chí Minh</p>
+                                            <p class="text-gray-600">Gara: Toyota Cộng Hòa</p>
+                                        </div>
                                     </td>
                                     <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         NVKD</td>
