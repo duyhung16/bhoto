@@ -38,7 +38,8 @@
 
 </head>
 
-<body class="bg-gray-50" x-data="{ changepw: false, assignQR: false, selectedUser: '', createAccount: false }">
+<body class="bg-light-blue"
+    x-data="{ changepw: false, assignQR: false, selectedUser: '', createAccount: false, accountDetail: false, searchDialog: false, filterDialog: false }">
     <!-- Sidebar Container with toggle -->
     <div class="sidebar-container group">
         <input type="checkbox" id="sidebar-toggle" class="hidden" />
@@ -155,7 +156,7 @@
         <div class="main-wrapper">
             <!-- Main content with responsive margins -->
             <div
-                class="transition-all duration-300 ease-in-out ml-0 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-0 md:group-has-[#sidebar-toggle:checked]:ml-20">
+                class="transition-all duration-300 ease-in-out ml-0 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-0 md:md:group-has-[#sidebar-toggle:checked]:ml-20">
                 <!-- Top Header -->
                 <header class="bg-white shadow-sm border-b hidden md:block">
                     <div class="flex items-center justify-between p-4">
@@ -247,12 +248,12 @@
             </div>
 
 
-            <main class="p-4 md:p-6 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-20 duration-300">
+            <main class="p-4 md:p-6 md:ml-64 md:group-has-[#sidebar-toggle:checked]:ml-20 duration-300">
                 <!-- Search and Filter Section -->
                 <div class="mb-6">
                     <!-- Search Form -->
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-4">
+                        <div class="hidden sm:flex flex-row gap-4">
                             <div>
                                 <input type="text" placeholder="Tìm theo Tên, SĐT, ID, Key..."
                                     class="w-full border border-border placeholder-dummy rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-primary">
@@ -276,7 +277,7 @@
                         </div>
 
                         <!-- Action Buttons -->
-                        <div class="flex flex-col md:flex-row gap-2">
+                        <div class="grid grid-cols-2 sm:flex flex-row justify-between gap-2">
                             <button @click="createAccount = true"
                                 class="bg-[linear-gradient(to_bottom,_#F37021_0%,_#F37021_50%,_#E0671F_50.01%,_#E0671F_100%)] text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer inline-flex items-center justify-center">
                                 Tạo tài khoản <i class="fas fa-plus ml-2"></i>
@@ -290,7 +291,7 @@
                     </div>
 
                     <!-- Filter Tabs -->
-                    <div class="flex flex-wrap gap-2 mb-4">
+                    <div class="hidden sm:flex flex-wrap gap-2 mb-4">
                         <input type="checkbox" id="filter-all" class="hidden peer/filter-all" checked />
                         <label for="filter-all"
                             class="border border-border bg-white text-dark-gray hover:bg-gray-50 transition-colors peer-checked/filter-all:border-[#1A67B2] peer-checked/filter-all:text-[#1A67B2] px-4 py-2 rounded-md text-sm font-medium cursor-pointer">
@@ -312,6 +313,17 @@
                             Đại lý
                         </label>
                     </div>
+
+                    <div class="sm:hidden grid grid-cols-2 gap-2">
+                        <div class="border border-border bg-white text-dark-gray hover:bg-gray-50 transition-colors p-2 rounded-md text-sm font-medium flex flex-row justify-between items-center"
+                            @click="searchDialog = true">
+                            Tìm kiếm <i class="fas fa-search mr-2"></i>
+                        </div>
+                        <div class="border border-border bg-white text-dark-gray hover:bg-gray-50 transition-colors p-2 rounded-md text-sm font-medium flex flex-row justify-between items-center"
+                            @click="filterDialog = true">
+                            Bộ lọc <i class="fas fa-filter mr-2"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Users Table -->
@@ -326,26 +338,33 @@
                                         SĐT</th>
                                     <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Tên</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                    <th
+                                        class="hidden sm:table-cell px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Loại TK</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                    <th
+                                        class="hidden sm:table-cell px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Chiết khấu %</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                    <th
+                                        class="hidden sm:table-cell px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         QR tồn / Tổng số</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                    <th
+                                        class="hidden sm:table-cell px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Doanh số</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                    <th
+                                        class="hidden sm:table-cell px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Giá bán</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                    <th
+                                        class="hidden sm:table-cell px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Hoa hồng</th>
-                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                    <th
+                                        class="hidden sm:table-cell px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
                                         Ngày tạo</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
-                                <tr class="bg-orange-50 border-l-4 border-orange-400">
+                                <tr class="bg-orange-50 border-l-4 border-orange-400" @click="accountDetail = true">
                                     <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex items-center space-x-2">
+                                        <div class="hidden sm:flex items-center space-x-2">
                                             <label for="expand-1"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
@@ -357,6 +376,7 @@
                                                 <i class="fas fa-link text-primary"></i>
                                             </button>
                                         </div>
+                                        <input type="checkbox" class="sm:hidden" />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
@@ -368,19 +388,26 @@
                                             Chí Minh</p>
                                         <p class="text-gray-600">Gara: Toyota Cộng Hòa</p>
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">GDV</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">63</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">2,613/8,000</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">2,355,801,030</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">1,359,968,248</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        GDV</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        63</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        2,613/8,000</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        2,355,801,030</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,359,968,248</td>
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         12,110,990</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        02/03/2024</td>
                                 </tr>
 
                                 <tr class="hover:bg-light-blue">
                                     <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex items-center space-x-2">
+                                        <div class="hidden sm:flex items-center space-x-2">
                                             <label for="expand-2"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
@@ -391,22 +418,30 @@
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
+                                        <input type="checkbox" class="sm:hidden" />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">Đặng Hưng</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">DL</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">45</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">1,053/6,254</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">30,506,300</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">17,226,680</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        DL</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        45</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        1,053/6,254</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        30,506,300</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        17,226,680</td>
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         2,698,710</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        02/03/2024</td>
                                 </tr>
 
                                 <tr class="hover:bg-light-blue">
                                     <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex items-center space-x-2">
+                                        <div class="hidden sm:flex items-center space-x-2">
                                             <label for="expand-3"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
@@ -417,23 +452,31 @@
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
+                                        <input type="checkbox" class="sm:hidden" />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">PHAM THI THU SUONG
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">DL</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">60</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">94/329</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">203,699,760</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">92,326,856</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        DL</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        60</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        94/329</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        203,699,760</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        92,326,856</td>
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         8,601,504</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        02/03/2024</td>
                                 </tr>
 
                                 <tr class="hover:bg-light-blue">
                                     <td class="px-4 py-4 whitespace-nowrap">
-                                        <div class="flex items-center space-x-2">
+                                        <div class="hidden sm:flex items-center space-x-2">
                                             <label for="expand-4"
                                                 class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
@@ -444,18 +487,26 @@
                                                 QR
                                                 <i class="fas fa-link text-primary"></i></button>
                                         </div>
+                                        <input type="checkbox" class="sm:hidden" />
                                     </td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">0936505606</td>
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">Nguyen Thanh Long
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">NVKD</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">58</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">2,613/8,000</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">30,506,300</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">17,226,680</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        NVKD</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        58</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        2,613/8,000</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        30,506,300</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        17,226,680</td>
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-secondary font-medium">
                                         2,110,990</td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">02/03/2024</td>
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        02/03/2024</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -463,25 +514,16 @@
                 </div>
 
                 <!-- Pagination -->
-                <div class="py-3 flex items-center justify-between border-t border-gray-200">
-                    <div class="flex-1 flex justify-between sm:hidden">
-                        <button
-                            class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                            Previous
-                        </button>
-                        <button
-                            class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
-                            Next
-                        </button>
-                    </div>
-                    <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+                <div class="py-3 flex flex-col justify-between border-t border-gray-200">
+                    <div class="flex-1 flex items-center justify-between">
                         <div>
                             <p class="text-sm text-gray-700">
-                                Trang <span class="font-bold">1</span> / <span class="font-bold">425</span>
+                                <span class="hidden sm:inline">Trang <span class="font-bold">1</span> / <span
+                                        class="font-bold">425</span></span>
                                 (Tổng số <span class="font-bold">4,246</span>)
                             </p>
                         </div>
-                        <nav class="relative z-0 grid grid-cols-9" aria-label="Pagination">
+                        <nav class="hidden relative z-0 sm:grid grid-cols-9" aria-label="Pagination">
                             <button
                                 class="flex items-center justify-center px-2 py-2 rounded-l-md text-sm font-medium text-gray-500 hover:bg-gray-50">
                                 <i class="fas fa-angle-double-left"></i>
@@ -520,14 +562,39 @@
                         </div>
                     </div>
                 </div>
+                <div class="flex-1 flex justify-between sm:hidden">
+                    <button
+                        class="relative inline-flex items-center py-2 text-sm font-medium rounded-md text-primary hover:bg-gray-50">
+                        <i class="fas fa-chevron-left mr-1"></i>
+                        Trước
+                    </button>
+                    <div class="flex items-center text-sm">
+                        <input type="text"
+                            class="w-10 text-center px-2 py-1 rounded-md border border-border focus:outline-none focus:ring-1 focus:ring-primary"
+                            value="1" />
+                        <span class="mx-2">/</span>
+                        <span class="text-normal font-semibold">425</span>
+                    </div>
+                    <button
+                        class="ml-3 relative inline-flex items-center py-2 text-sm font-medium rounded-md text-primary hover:bg-gray-50">
+                        Sau
+                        <i class="fas fa-chevron-right ml-1"></i>
+                    </button>
+                </div>
             </main>
         </div>
     </div>
 
+    <div class="sm:hidden sticky bottom-0 left-0 right-0 bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white px-4 py-2 text-sm font-medium flex items-center justify-center"
+        @click="assignQR = true">
+        Gán QR <i class="fas fa-link ml-2"></i>
+    </div>
+
     <!-- Create Account Modal -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="createAccount"
-        x-cloak>
-        <div class="bg-white rounded-2xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center sm:p-4 flex"
+        x-show="createAccount" x-cloak>
+        <div
+            class="bg-white sm:rounded-2xl sm:shadow-xl w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[90vh] overflow-y-auto flex flex-col">
             <!-- Modal Header -->
             <div class="flex items-center justify-between p-6 border-b">
                 <h2 class="text-xl font-bold text-primary">TẠO TÀI KHOẢN</h2>
@@ -537,19 +604,23 @@
             </div>
 
             <!-- Modal Body -->
-            <div class="p-6 bg-light-blue">
+            <div class="p-6 bg-light-blue flex-1">
                 <form class="space-y-6">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <!-- Phone Number -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">SĐT</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">SĐT
+                                <span class="text-red-500">*</span>
+                            </label>
                             <input type="tel" value="0936505606"
                                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                         </div>
 
                         <!-- Name -->
                         <div>
-                            <label class="block text-sm font-medium text-gray-700 mb-2">Tên</label>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Tên
+                                <span class="text-red-500">*</span>
+                            </label>
                             <input type="text" value="Nguyen Huy Hoang"
                                 class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-1 focus:ring-primary">
                         </div>
@@ -595,14 +666,16 @@
                 </form>
             </div>
             <!-- Action Buttons -->
-            <div class="flex items-center justify-center space-x-3 p-6 border-t bg-light-blue">
-                <button type="submit"
-                    class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-blue-700 transition-colors">
-                    Tạo tài khoản
-                </button>
+            <div
+                class="grid grid-cols-2 sm:flex items-center justify-center sm:space-x-3 sm:p-6 border-t bg-light-blue">
                 <button @click="createAccount = false"
-                    class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-normal rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                    class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-normal sm:rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
                     Bỏ qua
+                </button>
+                <button type="submit"
+                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] px-4 py-2 text-sm font-medium text-white sm:rounded-md">
+                    Tạo tài khoản
+                    <i class="fas fa-plus ml-1"></i>
                 </button>
             </div>
         </div>
@@ -652,16 +725,17 @@
     </div>
 
     <!-- Assign QR Modal -->
-    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="assignQR"
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center sm:p-4 flex" x-show="assignQR"
         x-cloak>
-        <div class="bg-white rounded-md shadow-xl max-w-lg w-full animate-fade-in-down">
+        <div
+            class="bg-white sm:rounded-md sm:shadow-xl sm:max-w-lg w-full h-full sm:h-auto animate-fade-in-down flex flex-col">
             <div class="flex items-center justify-between p-6 border-b">
                 <h3 class="text-lg font-semibold text-primary" x-text="'GÁN QR CHO USER ' + selectedUser"></h3>
                 <button class="text-gray-400 hover:text-gray-600 cursor-pointer" @click="assignQR = false">
                     <i class="fas fa-times text-xl"></i>
                 </button>
             </div>
-            <div class="p-6 bg-light-blue">
+            <div class="p-6 bg-light-blue flex-1">
                 <form class="space-y-4">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">Số bắt đầu</label>
@@ -675,14 +749,233 @@
                     </div>
                 </form>
             </div>
-            <div class="flex items-center justify-center space-x-3 p-6 border-t bg-light-blue">
+            <div
+                class="grid grid-cols-2 sm:flex items-center justify-center sm:space-x-3 sm:p-6 border-t bg-light-blue">
                 <button @click="assignQR = false"
-                    class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-normal rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                    class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-normal sm:rounded-md px-4 py-2 text-sm font-medium">
                     Bỏ qua
                 </button>
                 <button
-                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] text-white sm:rounded-md px-4 py-2 text-sm font-medium">
                     Gán QR
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Account Detail Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center sm:p-4 flex"
+        x-show="accountDetail" x-cloak>
+        <div
+            class="bg-white sm:rounded-2xl sm:shadow-xl w-full h-full sm:h-auto sm:max-w-2xl sm:max-h-[90vh] overflow-y-auto flex flex-col">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b">
+                <h2 class="text-xl font-bold text-primary">THÔNG TIN CHI TIẾT</h2>
+                <button @click="accountDetail = false" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="bg-light-blue flex-1">
+                <div class="space-y-0">
+                    <!-- SĐT -->
+                    <div class="flex items-center py-3 px-4 bg-white border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">SĐT</div>
+                        <div class="w-2/3 text-sm text-gray-900">0936505606</div>
+                    </div>
+
+                    <!-- Tên -->
+                    <div class="flex items-center py-3 px-4 bg-gray-50 border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Tên</div>
+                        <div class="w-2/3 text-sm text-gray-900">Cường PVI Thống Nhất</div>
+                    </div>
+
+                    <!-- Loại TK -->
+                    <div class="flex items-center py-3 px-4 bg-white border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Loại TK</div>
+                        <div class="w-2/3 text-sm text-gray-900">GDV</div>
+                    </div>
+
+                    <!-- Quản lý -->
+                    <div class="flex items-center py-3 px-4 bg-gray-50 border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Quản lý</div>
+                        <div class="w-2/3 text-sm text-gray-900">admin</div>
+                    </div>
+
+                    <!-- Địa chỉ -->
+                    <div class="flex items-center py-3 px-4 bg-white border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Địa chỉ</div>
+                        <div class="w-2/3 text-sm text-gray-900">Số 10 Cộng Hòa, Phường 5, Q.Tân Bình, TP.Hồ Chí
+                            Minh</div>
+                    </div>
+
+                    <!-- Gara -->
+                    <div class="flex items-center py-3 px-4 bg-gray-50 border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Gara</div>
+                        <div class="w-2/3 text-sm text-gray-900">Toyota Cộng Hòa</div>
+                    </div>
+
+                    <!-- Chiết khấu % -->
+                    <div class="flex items-center py-3 px-4 bg-white border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Chiết khấu %</div>
+                        <div class="w-2/3 text-sm text-gray-900">63</div>
+                    </div>
+
+                    <!-- QR tồn / Tổng số -->
+                    <div class="flex items-center py-3 px-4 bg-gray-50 border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">QR tồn / Tổng số</div>
+                        <div class="w-2/3 text-sm text-gray-900">2,613/8,000</div>
+                    </div>
+
+                    <!-- Doanh số -->
+                    <div class="flex items-center py-3 px-4 bg-white border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Doanh số</div>
+                        <div class="w-2/3 text-sm text-gray-900">2,355,801,030</div>
+                    </div>
+
+                    <!-- Giá bán -->
+                    <div class="flex items-center py-3 px-4 bg-gray-50 border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Giá bán</div>
+                        <div class="w-2/3 text-sm text-gray-900">1,359,968,248</div>
+                    </div>
+
+                    <!-- Hoa hồng -->
+                    <div class="flex items-center py-3 px-4 bg-white border-b border-gray-100">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Hoa hồng</div>
+                        <div class="w-2/3 text-sm text-orange-500 font-semibold">2,110,990</div>
+                    </div>
+
+                    <!-- Ngày tạo -->
+                    <div class="flex items-center py-3 px-4 bg-gray-50">
+                        <div class="w-1/3 text-sm font-medium text-gray-600">Ngày tạo</div>
+                        <div class="w-2/3 text-sm text-gray-900">02/03/2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="grid grid-cols-2 sm:flex items-center justify-center sm:space-x-3 sm:p-6 border-t bg-gray-50">
+                <button @click="accountDetail = false"
+                    class="bg-[linear-gradient(to_bottom,_#E7F3FF_0%,_#E7F3FF_50%,_#DFEBFA_50.01%,_#DFEBFA_100%)] text-normal sm:rounded-md px-4 py-2 text-sm font-medium hover:bg-blue-700 transition-colors">
+                    Quay lại
+                </button>
+                <button @click="assignQR = true; accountDetail = false"
+                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] px-4 py-2 text-sm font-medium text-white sm:rounded-md">
+                    Gán QR <i class="fas fa-link ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Dialog Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="searchDialog"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform translate-y-4"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-4">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="text-lg font-semibold text-gray-900">TÌM KIẾM</h3>
+                <button @click="searchDialog = false" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 space-y-4 bg-light-blue">
+                <!-- General Search Input -->
+                <div>
+                    <input type="text" placeholder="Tìm theo Tên, SĐT, ID, Key..."
+                        class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+
+                <!-- Date Range Inputs -->
+                <div class="space-y-3">
+                    <div class="relative">
+                        <i
+                            class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="date" placeholder="Từ ngày"
+                            class="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="relative">
+                        <i
+                            class="fas fa-calendar-alt absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        <input type="date" placeholder="Đến ngày"
+                            class="w-full border border-gray-300 rounded-lg pl-10 pr-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex items-center justify-center p-6 border-t bg-light-blue">
+                <button
+                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] px-4 py-2 text-sm font-medium text-white sm:rounded-md">
+                    Tìm kiếm
+                    <i class="fas fa-search ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Dialog Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-50 items-center justify-center p-4 flex" x-show="filterDialog"
+        x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" x-cloak>
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform translate-y-4"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-4">
+            <!-- Modal Header -->
+            <div class="flex items-center justify-between p-6 border-b">
+                <h3 class="text-lg font-semibold text-gray-900">BỘ LỌC</h3>
+                <button @click="filterDialog = false" class="text-gray-400 hover:text-gray-600 cursor-pointer">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 bg-light-blue">
+                <!-- Filter Options Grid -->
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="checkbox" id="sp-filter-all" class="hidden peer/sp-filter-all" checked />
+                    <label for="sp-filter-all"
+                        class="border border-border bg-white text-dark-gray hover:bg-gray-50 transition-colors peer-checked/sp-filter-all:border-[#1A67B2] peer-checked/sp-filter-all:text-[#1A67B2] px-4 py-2 rounded-md text-sm font-medium cursor-pointer">
+                        <i class="fas fa-filter mr-2"></i>Tất cả
+                    </label>
+                    <input type="checkbox" id="sp-filter-director" class="hidden peer/sp-filter-director" />
+                    <label for="sp-filter-director"
+                        class="border border-border bg-white text-dark-gray px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors peer-checked/sp-filter-director:border-[#1A67B2] peer-checked/sp-filter-director:text-[#1A67B2] cursor-pointer">
+                        Giám đốc vùng
+                    </label>
+                    <input type="checkbox" id="sp-filter-sales" class="hidden peer/sp-filter-sales" />
+                    <label for="sp-filter-sales"
+                        class="border border-border bg-white text-dark-gray px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors peer-checked/sp-filter-sales:border-[#1A67B2] peer-checked/sp-filter-sales:text-[#1A67B2] cursor-pointer">
+                        NV Kinh doanh
+                    </label>
+                    <input type="checkbox" id="sp-filter-agent" class="hidden peer/sp-filter-agent" />
+                    <label for="sp-filter-agent"
+                        class="border border-border bg-white text-dark-gray px-4 py-2 rounded-md text-sm hover:bg-gray-50 transition-colors peer-checked/sp-filter-agent:border-[#1A67B2] peer-checked/sp-filter-agent:text-[#1A67B2] cursor-pointer">
+                        Đại lý
+                    </label>
+                </div>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="flex items-center justify-center p-6 border-t bg-light-blue">
+                <button
+                    class="bg-[linear-gradient(to_bottom,_#1A67B2_0%,_#1A67B2_50%,_#155899_50.01%,_#155899_100%)] px-4 py-2 text-sm font-medium text-white sm:rounded-md"
+                    @click="filterDialog = false" <i class="fas fa-filter mr-2"></i>
+                    Áp dụng
+                    <i class="fas fa-filter ml-2"></i>
                 </button>
             </div>
         </div>

@@ -39,7 +39,7 @@
 
 </head>
 
-<body class="bg-gray-50" x-data="{ changepw: false }">
+<body class="bg-light-blue" x-data="{ changepw: false }">
     <!-- Sidebar Container with toggle -->
     <div class="sidebar-container group">
         <input type="checkbox" id="sidebar-toggle" class="hidden" />
@@ -156,7 +156,7 @@
         <div class="main-wrapper">
             <!-- Main content with responsive margins -->
             <div
-                class="transition-all duration-300 ease-in-out ml-0 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-0 md:group-has-[#sidebar-toggle:checked]:ml-20">
+                class="transition-all duration-300 ease-in-out ml-0 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-0 md:md:group-has-[#sidebar-toggle:checked]:ml-20">
                 <!-- Top Header -->
                 <header class="bg-white shadow-sm border-b hidden md:block">
                     <div class="flex items-center justify-between p-4">
@@ -248,7 +248,7 @@
             </div>
 
 
-            <main class="p-4 md:p-6 md:ml-64 group-has-[#sidebar-toggle:checked]:ml-20 duration-300">
+            <main class="p-4 md:p-6 md:ml-64 md:group-has-[#sidebar-toggle:checked]:ml-20 duration-300">
                 <!-- Action Buttons -->
                 <div class="flex justify-end space-x-4 py-6 border-t">
                     <button
