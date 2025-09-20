@@ -337,7 +337,18 @@
                                     <th></th>
                                 </tr>
                             </thead>
-                            <thead class="bg-blue-50 border-b">
+                            <thead class="sm:hidden bg-blue-50 border-b">
+                                <tr>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                        Mã QR
+                                    </th>
+                                    <th></th>
+                                    <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
+                                        BKS
+                                    </th>
+                                </tr>
+                            </thead>
+                            <thead class="hidden sm:table-header-group bg-blue-50 border-b">
                                 <tr>
                                     <th></th>
                                     <th class="px-4 py-3 text-left text-xs font-semibold text-normal tracking-wider">
@@ -366,22 +377,27 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white">
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                            <tbody>
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
                                         </div>
@@ -389,44 +405,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         Cường PVT Thống Nhất
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         18LD-002.27
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,873,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         476,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -435,44 +460,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         DL Xuân Thủy ctv
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         29A-508.93
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         480,700
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         205,001
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -481,44 +515,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         NVKD Thịnh pvl
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         30a12345
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,826,000
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,162,000
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -527,44 +570,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         DL Chí Hải Anh
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         30M37305
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,873,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         476,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -573,44 +625,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         Thắng
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         18LD-002.27
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         480,700
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         205,001
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -619,44 +680,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         admin
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         29A-508.93
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         480,700
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         205,001
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -665,44 +735,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         Hà Linh
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         30a12345
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,873,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         476,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -711,44 +790,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         Chuẩn
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         30M37305
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,826,000
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,162,000
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -757,44 +845,53 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         Pham Trung Kien
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         18LD-002.27
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,873,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         476,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
 
-                                <tr class="hover:bg-light-blue border-b border-gray-100 cursor-pointer"
+                                <tr class="cursor-pointer hover:bg-light-blue even:bg-light-blue"
                                     @click="saleDetail = true">
+                                    <td class="sm:hidden px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        24304859
+                                    </td>
                                     <td class="px-4 py-4 whitespace-nowrap">
                                         <div class="flex items-center space-x-2">
                                             <button
-                                                class="cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
+                                                class="hidden sm:block cursor-pointer flex items-center justify-center w-6 h-6 hover:bg-gray-200 rounded transition-colors duration-200">
                                                 <i
                                                     class="fas fa-chevron-right text-gray-400 transition-transform duration-300 ease-in-out peer-checked/expand2:rotate-90"></i>
                                             </button>
                                             <button @click.stop="editQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Sửa
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Sửa</span>
                                                 <i class="fas fa-pencil text-primary ml-1"></i>
                                             </button>
                                             <button @click.stop="copyQR = true"
-                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">Copy
+                                                class="bg-blue-50 px-4 py-2 rounded-md text-primary text-sm hover:text-blue-800 cursor-pointer">
+                                                <span class="hidden sm:inline">Copy</span>
                                                 <i class="fas fa-clone text-primary ml-1"></i>
                                             </button>
 
@@ -803,25 +900,29 @@
                                     <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         24304859
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         Cường PVT Thống Nhất
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         18LD-002.27
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900">
+                                    <td class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900">
                                         0936505606
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         1 năm
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         1,873,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                         476,400
                                     </td>
-                                    <td class="px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
+                                    <td
+                                        class="hidden sm:table-cell px-4 py-4 whitespace-nowrap text-sm text-gray-900 text-right">
                                         05/03/2025 05:05:50
                                     </td>
                                 </tr>
